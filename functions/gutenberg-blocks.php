@@ -31,31 +31,31 @@ function container_block(){
 add_action( 'init', 'container_block', 10, 0 );
 
 ///////////////////////////////////////////////////////////////////////////////
-// HERO BOX                                                                  //
+// CAROUSEL                                                                  //
 ///////////////////////////////////////////////////////////////////////////////
-// function hero_box_block(){
-//     wp_register_script(
-//         'hero-box-script',
-//         get_template_directory_uri() . '/js/block-hero-box.js',
-//         array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
-//     );
+function carousel_block(){
+    wp_register_script(
+        'carousel-script',
+        get_template_directory_uri() . '/js/block-carousel.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
 
-//     wp_register_style(
-//         'hero-box-editor-style',
-//         get_template_directory_uri() . '/css/block-hero-box-editor-style.css',
-//         array( 'wp-edit-blocks' )
-//     );
+    wp_register_style(
+        'carousel-editor-style',
+        get_template_directory_uri() . '/css/block-carousel-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
 
-//     wp_register_style(
-//         'hero-box-style',
-//         get_template_directory_uri() . '/css/block-hero-box-style.css',
-//         array( 'wp-edit-blocks' )
-//     );
+    wp_register_style(
+        'carousel-style',
+        get_template_directory_uri() . '/css/block-carousel-style.css',
+        array( 'wp-edit-blocks' )
+    );
 
-//     register_block_type('childress/hero-box', array(
-//         'editor_script' => 'hero-box-script',
-//         'editor_style'  => 'hero-box-editor-style',
-//         'style'  => 'hero-box-style',
-//     ) );
-// }
-// add_action( 'init', 'hero_box_block', 10, 0 );
+    register_block_type('childress/carousel', array(
+        'editor_script' => 'carousel-script',
+        'editor_style'  => 'carousel-editor-style',
+        'style'  => 'carousel-style',
+    ) );
+}
+add_action( 'init', 'carousel_block', 10, 0 );
