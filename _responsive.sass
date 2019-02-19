@@ -1,0 +1,231 @@
+// sass-lint:disable nesting-depth
+
+///////////////////////////////////////////////////////////////////////////////
+// 576                                                                       //
+///////////////////////////////////////////////////////////////////////////////
+
+@media screen and (min-width: 576px)
+    body
+        +font-size(18)
+
+    .container
+        max-width: 540px
+
+        &--fluid
+            max-width: 100%
+
+    .learn-more
+        &__column
+            &:hover
+                .learn-more__img
+                    height: 250px
+
+        &__img
+            height: 200px
+
+        &__text
+            ul
+                padding-left: 0
+                width: 75%
+
+    .treble
+        &__cleft
+            left: -40px
+
+        &__text
+            +font-size(40)
+            padding-left: 130px
+
+    .video
+        &__presents
+            +font-size(32)
+
+    .reviews-hero
+        &__title
+            +font-size(66)
+
+    .reviews
+        &__title
+            +font-size(50)
+
+    .footer
+        &__grid
+            grid-template-columns: 1fr 1fr
+
+///////////////////////////////////////////////////////////////////////////////
+// 768                                                                       //
+///////////////////////////////////////////////////////////////////////////////
+
+@media screen and (min-width: 768px)
+    .container
+        max-width: 720px
+
+        &--fluid
+            max-width: 100%
+
+        &--thin
+            max-width: 576px
+
+    .header
+        &__brand
+            text-align: left
+
+        &__search-contact
+            flex-direction: row
+
+        &__search
+            margin-bottom: 0
+
+    .navbar
+        &__toggler
+            display: none
+
+        &__nav
+            align-items: center
+            flex-direction: row
+            max-height: unset !important // sass-lint:disable-line no-important
+
+        &__item
+            padding-bottom: 5px
+
+        &__drop
+            &:hover
+                & > .navbar__drop-menu
+                    display: block
+
+    .learn-more
+        grid-template-columns: repeat(3, 1fr)
+
+        &__column
+            &:hover
+                .learn-more__img
+                    height: 150px
+
+        &__img
+            height: 100px
+
+        &__text
+            ul
+                width: 75%
+
+    .mix-blend
+        margin-bottom: -90px
+
+    .treble
+        &__cleft
+            height: 300px
+
+        &__gradient
+            height: 135px
+            top: 98px
+
+        &__text
+            +font-size(50)
+            padding-left: 157px
+
+    .video
+        flex-direction: row
+
+        &__frame
+            margin-right: 30px
+
+    .footer
+        &__grid
+            grid-template-columns: repeat(3, 1fr)
+            padding: 30px
+
+        &__grid-section
+            &:last-of-type
+                grid-column: 2
+                margin-bottom: 0
+
+///////////////////////////////////////////////////////////////////////////////
+// 992                                                                       //
+///////////////////////////////////////////////////////////////////////////////
+
+@media screen and (min-width: 992px)
+    h2
+        +font-size(46)
+
+    h3
+        +font-size(32)
+
+    .container
+        max-width: 960px
+
+        &--fluid
+            max-width: 100%
+
+        &--thin
+            max-width: 793px
+
+    .header
+        flex-direction: row
+
+        &__brand
+            margin-bottom: 0
+
+    .section-heading
+        +font-size(60)
+
+    .learn-more
+        &__img
+            height: 200px
+
+        &__column
+            &:hover
+                .learn-more__img
+                    height: 250px
+
+        &__title
+            +font-size(46)
+
+        &__text
+            +font-size(20)
+            padding: 30px
+
+            ul
+                width: 50%
+
+    .mix-blend
+        +font-size(100)
+
+        &__40
+            +font-size(300)
+
+    .treble
+        &__cleft
+            height: 350px
+            left: 0
+
+        &__gradient
+            height: 157px
+            top: 114px
+
+        &__text
+            +font-size(62)
+            padding-left: 250px
+
+    .footer
+        &__grid
+            grid-template-columns: repeat(4, 1fr)
+
+        &__grid-section
+            margin-bottom: 0
+
+            &:last-of-type
+                grid-column: unset
+
+///////////////////////////////////////////////////////////////////////////////
+// 1200                                                                       //
+///////////////////////////////////////////////////////////////////////////////
+
+@media screen and (min-width: 1200px)
+    .container
+        max-width: 1140px
+
+        &--fluid
+            max-width: 100%
+
+        &--thin
+            max-width: 960px
