@@ -1,0 +1,153 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables'
+
+
+.wp-block-childress-learn-more
+    display: grid
+    grid-template-columns: 1fr
+
+    .learn-more
+        &__column
+            color: $color-black
+            cursor: pointer
+            display: flex
+            flex-direction: column
+            transition: .2s background-color ease
+
+            &:last-of-type
+                .learn-more__info
+                    border-right: 0
+
+            &:hover
+                background-color: $color-primary-alt
+                color: $color-white
+                text-decoration: none
+
+                .learn-more
+                    &__img
+                        height: 200px
+
+                    &__icon
+                        &--base
+                            opacity: 0
+
+                        &--hover
+                            opacity: 1
+
+                    &__title
+                        color: $color-white
+
+        &__title-box
+            align-items: center
+            display: flex
+            justify-content: center
+            padding: 15px
+
+        &__icon
+            position: relative
+            width: 75px
+
+            &--base,
+            &--hover
+                width: 100%
+
+            &--hover
+                opacity: 0
+                position: absolute
+
+        &__title
+            @extend %font-myriad
+            +font-size(38)
+            color: $color-primary
+            margin-bottom: 0
+
+        &__img
+            height: 150px
+            overflow: hidden
+            transition: .2s height ease
+            width: 100%
+
+            img
+                width: 100%
+
+        &__text
+            +font-size(18)
+            border-right: 1px solid $color-primary
+            flex: 1
+            padding: 30px 15px
+
+            ul
+                list-style-type: none
+                margin: 0 auto
+                padding-left: 30px
+
+            li
+                @extend %font-minion
+                +font-size(18)
+                margin-bottom: 10px
+                position: relative
+
+                &::before
+                    content: url('http://dev.childressagency.com/robersonsmusic/wp-content/uploads/2019/02/Layer_41.png');
+                    left: -30px
+                    position: absolute
+                    top: 0
+
+        &__btn
+            transition: .1s display ease
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-learn-more
+        .learn-more
+            &__column
+                &:hover
+                    .learn-more__img
+                        height: 250px
+
+            &__img
+                height: 200px
+
+            &__text
+                ul
+                    padding-left: 0
+                    width: 75%
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-learn-more
+        .learn-more
+            grid-template-columns: repeat(3, 1fr)
+
+            &__column
+                &:hover
+                    .learn-more__img
+                        height: 150px
+
+            &__img
+                height: 100px
+
+            &__text
+                ul
+                    width: 75%
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-learn-more
+        .learn-more
+            &__img
+                height: 200px
+
+            &__column
+                &:hover
+                    .learn-more__img
+                        height: 250px
+
+            &__title
+                +font-size(46)
+
+            &__text
+                +font-size(20)
+                padding: 30px
+
+                ul
+                    width: 50%
+

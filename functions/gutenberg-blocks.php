@@ -59,3 +59,33 @@ function carousel_block(){
     ) );
 }
 add_action( 'init', 'carousel_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// LEARN MORE                                                                //
+///////////////////////////////////////////////////////////////////////////////
+function learn_more_block(){
+    wp_register_script(
+        'learn-more-script',
+        get_template_directory_uri() . '/js/block-learn-more.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'learn-more-editor-style',
+        get_template_directory_uri() . '/css/block-learn-more-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'learn-more-style',
+        get_template_directory_uri() . '/css/block-learn-more-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/learn-more', array(
+        'editor_script' => 'learn-more-script',
+        'editor_style'  => 'learn-more-editor-style',
+        'style'  => 'learn-more-style',
+    ) );
+}
+add_action( 'init', 'learn_more_block', 10, 0 );
