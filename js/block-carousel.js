@@ -49,21 +49,47 @@ registerBlockType( 'childress/carousel-slide', {
     parent: false,
 
     attributes: {
-
+        imageUrl: {
+            type: 'string'
+        },
+        imageAlt: {
+            type: 'string'
+        },
+        imageId: {
+            type: 'number'
+        },
     },
 
     edit( { attributes, className, setAttributes } ) {
+        const { imageUrl, imageAlt, imageId } = attributes;
+
         return (
-            <div className={ className + ' carousel__slide' }>
-                <InnerBlocks />
+            <div className={ className + ' carousel__slide' } style={{ backgroundImage: `url(${ imageUrl })` }}>
+                <div className='carousel__slide-inner'>
+                    <MediaUpload
+                        onSelect={ media => { setAttributes({ imageUrl: media.url, imageAlt: media.alt, imageId: media.id }); } }
+                        type="image"
+                        value={ imageId }
+                        render={ ({ open }) => (
+                            <Button className={ 'button button-large' } onClick={ open }>
+                                { 'Set Background' }
+                            </Button>
+                        ) }
+                    />
+                    <InnerBlocks />
+                </div>
             </div>
         );
     },
 
     save( { attributes } ) {
+        const { imageUrl, imageAlt, imageId } = attributes;
+
         return (
-            <div className='carousel__slide'>
-                <InnerBlocks.Content />
+            <div className='carousel__slide' style={{ backgroundImage: `url(${ imageUrl })` }}>
+                <div className='carousel__slide-inner'>
+                    <InnerBlocks.Content />
+                </div>
             </div>
         );
     },
