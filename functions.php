@@ -46,6 +46,7 @@
 	// load fonts
 	function load_fonts() {
 		wp_enqueue_style( 'font-awesome', '//use.fontawesome.com/releases/v5.3.1/css/all.css' );
+		wp_enqueue_style( 'minion-myriad', 'https://use.typekit.net/nez8wct.css' );
 	}
 	add_action( 'wp_enqueue_scripts', 'load_fonts' );
 
