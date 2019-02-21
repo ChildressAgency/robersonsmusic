@@ -179,3 +179,33 @@ function video_presentation_block(){
     ) );
 }
 add_action( 'init', 'video_presentation_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// REVIEWS                                                                   //
+///////////////////////////////////////////////////////////////////////////////
+function reviews_block(){
+    wp_register_script(
+        'reviews-script',
+        get_template_directory_uri() . '/js/block-reviews.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'reviews-editor-style',
+        get_template_directory_uri() . '/css/block-reviews-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'reviews-style',
+        get_template_directory_uri() . '/css/block-reviews-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/reviews', array(
+        'editor_script' => 'reviews-script',
+        'editor_style'  => 'reviews-editor-style',
+        'style'  => 'reviews-style',
+    ) );
+}
+add_action( 'init', 'reviews_block', 10, 0 );
