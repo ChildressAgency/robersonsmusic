@@ -89,3 +89,33 @@ function learn_more_block(){
     ) );
 }
 add_action( 'init', 'learn_more_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// PASSION                                                                   //
+///////////////////////////////////////////////////////////////////////////////
+function passion_block(){
+    wp_register_script(
+        'passion-script',
+        get_template_directory_uri() . '/js/block-passion.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'passion-editor-style',
+        get_template_directory_uri() . '/css/block-passion-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'passion-style',
+        get_template_directory_uri() . '/css/block-passion-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/passion', array(
+        'editor_script' => 'passion-script',
+        'editor_style'  => 'passion-editor-style',
+        'style'  => 'passion-style',
+    ) );
+}
+add_action( 'init', 'passion_block', 10, 0 );

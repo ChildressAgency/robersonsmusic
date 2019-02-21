@@ -1,0 +1,150 @@
+@import '../_variables.sass'
+
+.wp-block-childress-passion
+    .passion
+        &__text
+            +font-size(20)
+
+    .mix-blend
+        background-color: $color-white
+        position: relative
+
+        &__background
+            display: none
+            height: 100%
+            left: 0
+            object-fit: cover
+            pointer-events: none
+            position: absolute
+            top: 0
+            width: 100%
+
+            @supports (mix-blend-mode: screen)
+                display: block
+                mix-blend-mode: screen
+
+
+        &__text
+            +fluid-font(70, 100, 280, 992)
+            color: $color-primary
+            font-weight: bold
+            line-height: .8
+            text-align: center
+
+            @supports (mix-blend-mode: screen)
+                color: $color-black
+
+
+            &--big
+                @extend %font-minion
+                +fluid-font(210, 300, 280, 992)
+                font-weight: bold
+
+    .treble
+        position: relative
+
+        &__cleft
+            height: 260px
+            left: -60px
+            position: relative
+            z-index: 99
+
+        &__cleft-img
+            height: 100%
+            object-fit: cover
+            position: absolute
+            width: 100%
+
+        &__gradient
+            height: 117px
+            left: 0
+            position: absolute
+            top: 85px
+            width: 100%
+            z-index: -1
+
+            &::before
+                // background-image: url('http://dev.childressagency.com/robersonsmusic/wp-content/uploads/2018/11/picundergradient.png')
+                bottom: 0
+                content: ' '
+                display: block
+                left: 0
+                pointer-events: none
+                position: absolute
+                right: 0
+                top: 0
+
+                @supports (mix-blend-mode: screen)
+                    mix-blend-mode: darken
+
+                @supports not (mix-blend-mode: screen)
+                    opacity: 0
+
+
+            &::after
+                background: linear-gradient(to right, $color-secondary, transparent)
+                content: ' '
+                height: 100%
+                left: 0
+                position: absolute
+                top: 0
+                width: 100%
+
+        &__text
+            @extend %font-minion
+            +font-size(35)
+            color: $color-white
+            padding-left: 100px
+            position: absolute
+            top: 52%
+            transform: translateY(-50%)
+            width: 100%
+
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-passion
+        .treble
+            &__cleft
+                left: -40px
+
+            &__text
+                +font-size(40)
+                padding-left: 130px
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-passion
+        .mix-blend
+            margin-bottom: -90px
+
+        .treble
+            &__cleft
+                height: 300px
+
+            &__gradient
+                height: 135px
+                top: 98px
+
+            &__text
+                +font-size(50)
+                padding-left: 157px
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-passion
+        .mix-blend
+            +font-size(100)
+
+            &__text--big
+                +font-size(300)
+
+        .treble
+            &__cleft
+                height: 350px
+                left: 0
+
+            &__gradient
+                height: 157px
+                top: 114px
+
+            &__text
+                +font-size(62)
+                padding-left: 250px
