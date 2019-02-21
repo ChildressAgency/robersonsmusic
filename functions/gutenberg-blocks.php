@@ -149,3 +149,33 @@ function section_heading_block(){
     ) );
 }
 add_action( 'init', 'section_heading_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// VIDEO PRESENTATION                                                        //
+///////////////////////////////////////////////////////////////////////////////
+function video_presentation_block(){
+    wp_register_script(
+        'video-presentation-script',
+        get_template_directory_uri() . '/js/block-video-presentation.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'video-presentation-editor-style',
+        get_template_directory_uri() . '/css/block-video-presentation-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'video-presentation-style',
+        get_template_directory_uri() . '/css/block-video-presentation-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/video-presentation', array(
+        'editor_script' => 'video-presentation-script',
+        'editor_style'  => 'video-presentation-editor-style',
+        'style'  => 'video-presentation-style',
+    ) );
+}
+add_action( 'init', 'video_presentation_block', 10, 0 );
