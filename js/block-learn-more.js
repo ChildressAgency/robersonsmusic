@@ -136,16 +136,16 @@ registerBlockType( 'childress/learn-more-column', {
                 </div>
                 <div className='learn-more__img'>
                     <MediaUpload
-                            label='Image'
-                            onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ) } }
-                            type='image'
-                            value={ imageUrl }
-                            render={ ({ open }) => (
-                                <Button className={ imageUrl ? 'image-button' : 'button button-large' } onClick={ open }>
-                                    { imageUrl ? <img src={ imageUrl } /> : 'Select Image' }
-                                </Button>
-                            ) }
-                        />
+                        label='Image'
+                        onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ) } }
+                        type='image'
+                        value={ imageUrl }
+                        render={ ({ open }) => (
+                            <Button className={ imageUrl ? 'image-button' : 'button button-large' } onClick={ open }>
+                                { imageUrl ? <img src={ imageUrl } /> : 'Select Image' }
+                            </Button>
+                        ) }
+                    />
                 </div>
                 <div className='learn-more__text'>
                     <InnerBlocks
