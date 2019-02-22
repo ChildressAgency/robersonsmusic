@@ -89,6 +89,15 @@ registerBlockType( 'childress/reviews', {
         imageId: {
             type: 'number'
         },
+        celloUrl: {
+            type: 'string'
+        },
+        celloAlt: {
+            type: 'string'
+        },
+        celloId: {
+            type: 'number'
+        },
         title: {
             type: 'string'
         },
@@ -98,7 +107,7 @@ registerBlockType( 'childress/reviews', {
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { imageUrl, imageAlt, imageId, title, subtitle } = attributes;
+        const { imageUrl, imageAlt, imageId, celloUrl, celloAlt, celloId, title, subtitle } = attributes;
 
         return (
             <section className={ className }>
@@ -124,6 +133,17 @@ registerBlockType( 'childress/reviews', {
                     </h2>
                 </div>
                 <div className='reviews'>
+                    <MediaUpload
+                        label='Cello'
+                        onSelect={ media => { setAttributes( { celloUrl: media.url, celloAlt: media.alt, celloId: media.id } ) } }
+                        type='image'
+                        value={ celloUrl }
+                        render={ ({ open }) => (
+                            <Button className={ celloUrl ? 'image-button' : 'button button-large' } onClick={ open }>
+                                { celloUrl ? <img src={ celloUrl } /> : 'Select Cello' }
+                            </Button>
+                        ) }
+                    />
                     <div className='container'>
                         <h3 className='reviews__title'>
                             <PlainText
@@ -147,7 +167,7 @@ registerBlockType( 'childress/reviews', {
     },
 
     save( { attributes } ) {
-        const { imageUrl, imageAlt, imageId, title, subtitle } = attributes;
+        const { imageUrl, imageAlt, imageId, celloUrl, celloAlt, celloId, title, subtitle } = attributes;
 
         return (
             <section>
@@ -156,6 +176,7 @@ registerBlockType( 'childress/reviews', {
                     <h2 className='reviews-hero__title'>{ title }</h2>
                 </div>
                 <div className='reviews'>
+                    <img src={ celloUrl } alt={ celloAlt } className={ 'reviews__cello' } />
                     <div className='container'>
                         <h3 className='reviews__title'>{ subtitle }</h3>
                         <div className='reviews__slides'>
