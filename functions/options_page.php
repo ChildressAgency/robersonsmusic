@@ -17,7 +17,6 @@
         register_setting( 'theme_options', 'instagram' );
         register_setting( 'theme_options', 'linkedin' );
         register_setting( 'theme_options', 'pinterest' );
-        register_setting( 'theme_options', 'google-plus' );
     }
     add_action( 'admin_init', 'register_mysettings' );
 
@@ -122,11 +121,6 @@
                     <tr valign="top">
                         <th scope="row">Pinterest</th>
                         <td><input type="text" name="pinterest" value="<?php echo esc_attr( get_option('pinterest') ); ?>" size="60" /></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row">Google Plus</th>
-                        <td><input type="text" name="google-plus" value="<?php echo esc_attr( get_option('google-plus') ); ?>" size="60" /></td>
                     </tr>
                 </table>
 

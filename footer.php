@@ -5,7 +5,7 @@
                 <h3 class="footer__section-heading">Our Location</h3>
                 <img class="footer__squiggle" src="wp-content/uploads/2018/11/squiggly-underline.png" alt="">
                 <p><?php echo get_option( 'address' ); ?></p>
-                <p><strong>Hours:</strong> <?php get_option( 'hours' ); ?></p>
+                <p><strong>Hours:</strong> <?php echo get_option( 'hours' ); ?></p>
             </div>
             <div class="footer__grid-section">
                 <h3 class="footer__section-heading">Contact Us</h3>
@@ -18,6 +18,7 @@
                     <?php if( get_option( 'twitter' ) ): ?><a href="<?php echo get_option( 'twitter' ); ?>"><i class="fab fa-twitter"></i></a><?php endif; ?>
                     <?php if( get_option( 'instagram' ) ): ?><a href="<?php echo get_option( 'instagram' ); ?>"><i class="fab fa-instagram"></i></a><?php endif; ?>
                     <?php if( get_option( 'linkedin' ) ): ?><a href="<?php echo get_option( 'linkedin' ); ?>"><i class="fab fa-linkedin-in"></i></a><?php endif; ?>
+                    <?php if( get_option( 'pinterest' ) ): ?><a href="<?php echo get_option( 'pinterest' ); ?>"><i class="fab fa-pinterest"></i></a><?php endif; ?>
                 </div>
             </div>
             <div class="footer__grid-section">
@@ -32,7 +33,7 @@
                 <p>Forms and Payment are Secure.</p>
             </div>
         </div>
-        <div class="footer__copyright">&copy; <?php echo date( 'Y' ); ?> Roberson's | Website designed by <a href="https://childressagency.com/">The Childress Agency</a></div>
+        <div class="footer__copyright"><?php echo get_option( 'copyright' ); ?></div>
     </footer>
     
     <?php wp_footer(); ?>
