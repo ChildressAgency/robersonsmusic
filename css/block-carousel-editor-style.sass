@@ -1,0 +1,21 @@
+@import '../_variables.sass'
+
+.wp-block-childress-carousel
+    height: unset
+    position: relative
+
+    .carousel
+        &__slide-inner
+            min-height: unset
+            padding: 15px
+
+    .button.button-large // sass-lint:disable-line force-element-nesting
+        align-self: flex-start
+        z-index: 999
+
+    .editor-media-placeholder
+        background-color: $color-grey
+        border-radius: 10px
+
+    .wp-block-paragraph
+        +font-size(45)

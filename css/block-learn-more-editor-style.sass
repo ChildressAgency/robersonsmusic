@@ -1,0 +1,49 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-learn-more
+    display: block
+
+    .learn-more
+        &__column
+            &:hover
+                .learn-more
+                    &__title
+                        color: $color-primary
+
+        &__text
+            padding: 0
+
+    .editor-block-list__layout
+        display: flex
+
+        & > .wp-block
+            flex: 1
+
+.wp-block-childress-learn-more-column
+    .learn-more
+        &__title-box
+            display: block
+
+        &__title
+            textarea
+                text-align: center
+
+        &__icon
+            display: flex
+            width: 100%
+
+            .image-button
+                background-color: #efefef
+                border-radius: 15px
+
+                &:first-of-type
+                    margin-right: 15px
+
+        &__text
+            border-right: 0
+
+    .editor-block-list__layout
+        display: block
