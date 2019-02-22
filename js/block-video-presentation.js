@@ -48,14 +48,14 @@ registerBlockType( 'childress/video-presentation', {
 
         function setLink( value ){
             var videoId = getId( value );
-            var link = '//www.youtube.com/watch/' + videoId;
+            var link = '//www.youtube.com/watch?v=' + videoId;
             var embed = '//www.youtube.com/embed/' + videoId;
 
             setAttributes({ link: link, embedLink: embed });
         }
 
         return (
-            <div className={ className + 'video' }>
+            <section className={ className + 'video' }>
                 <div className='video__frame'>
                     <URLInputButton
                         url={ link }
@@ -87,7 +87,7 @@ registerBlockType( 'childress/video-presentation', {
                         />
                     </p>
                 </div>
-            </div>
+            </section>
         );
     },
 
@@ -95,7 +95,7 @@ registerBlockType( 'childress/video-presentation', {
         const { title, date, text, link, embedLink } = attributes;
 
         return (
-            <div className='container'>
+            <section className='container'>
                 <div className='video'>
                     <div className='video__frame'>
                         <iframe width='560' height='315' src={ embedLink } frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
@@ -108,7 +108,7 @@ registerBlockType( 'childress/video-presentation', {
                         <a href={ link } className='video__link'>View on Youtube</a>
                     </div>
                 </div>
-            </div>
+            </section>
         );
     },
 } );
