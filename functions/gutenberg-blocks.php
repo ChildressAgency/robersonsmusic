@@ -239,3 +239,33 @@ function hero_block(){
     ) );
 }
 add_action( 'init', 'hero_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// TEAM                                                                      //
+///////////////////////////////////////////////////////////////////////////////
+function team_block(){
+    wp_register_script(
+        'team-script',
+        get_template_directory_uri() . '/js/block-team.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'team-editor-style',
+        get_template_directory_uri() . '/css/block-team-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'team-style',
+        get_template_directory_uri() . '/css/block-team-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/team', array(
+        'editor_script' => 'team-script',
+        'editor_style'  => 'team-editor-style',
+        'style'  => 'team-style',
+    ) );
+}
+add_action( 'init', 'team_block', 10, 0 );

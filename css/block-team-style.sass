@@ -1,0 +1,75 @@
+@import '../_variables.sass'
+
+.wp-block-childress-team
+    display: grid
+    grid-gap: 15px
+    grid-template-columns: repeat(1, 1fr)
+
+    .team-member
+        align-items: start
+        position: relative
+
+        &__img
+            display: block
+            width: 100%
+
+        &__info
+            background-color: $color-shade
+            color: $color-white
+            height: 100%
+            left: 0
+            opacity: 0
+            padding: 30px
+            position: absolute
+            top: 0
+            transition: opacity .3s ease
+            width: 100%
+
+            &:hover
+                opacity: 1
+
+        &__name
+            @extend %font-myriad-semibold
+            +font-size(40)
+            line-height: 1em
+            margin-bottom: 0
+
+        &__position
+            @extend %font-minion
+            +font-size(36)
+            line-height: 1em
+            margin-bottom: 15px
+
+        &--has-desc
+            display: grid
+            grid-column: span 3
+            grid-gap: 15px
+            grid-template-columns: repeat(1, 1fr)
+
+            .team-member
+                &__info
+                    background-color: transparent
+                    color: $color-black
+                    grid-column: span 2
+                    opacity: 1
+                    padding-top: 15px
+                    position: relative
+
+                &__position
+                    color: $color-primary
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-team
+        grid-template-columns: repeat(2, 1fr)
+
+        .team-member
+            &--has-desc
+                grid-template-columns: repeat(2, 1fr)
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-team
+        grid-template-columns: repeat(3, 1fr)
+
+        .team-member
+            &--has-desc
+                grid-template-columns: repeat(3, 1fr)
