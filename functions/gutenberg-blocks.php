@@ -209,3 +209,33 @@ function reviews_block(){
     ) );
 }
 add_action( 'init', 'reviews_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// HERO                                                                      //
+///////////////////////////////////////////////////////////////////////////////
+function hero_block(){
+    wp_register_script(
+        'hero-script',
+        get_template_directory_uri() . '/js/block-hero.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'hero-editor-style',
+        get_template_directory_uri() . '/css/block-hero-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'hero-style',
+        get_template_directory_uri() . '/css/block-hero-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/hero', array(
+        'editor_script' => 'hero-script',
+        'editor_style'  => 'hero-editor-style',
+        'style'  => 'hero-style',
+    ) );
+}
+add_action( 'init', 'hero_block', 10, 0 );
