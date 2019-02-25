@@ -83,6 +83,11 @@
 					'color'		=> '#1c60c6'
 				),
 				array(
+					'name'		=> 'Ribbon Blue',
+					'slug'		=> 'ribbon-blue',
+					'color'		=> '#1271ff'
+				),
+				array(
 					'name'		=> 'Light Blue',
 					'slug'		=> 'light-blue',
 					'color'		=> '#80e2ff'
