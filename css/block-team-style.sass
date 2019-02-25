@@ -1,4 +1,7 @@
+// sass-lint:disable nesting-depth
+
 @import '../_variables.sass'
+
 
 .wp-block-childress-team
     display: grid
@@ -42,7 +45,6 @@
 
         &--has-desc
             display: grid
-            grid-column: span 3
             grid-gap: 15px
             grid-template-columns: repeat(1, 1fr)
 
@@ -50,9 +52,8 @@
                 &__info
                     background-color: transparent
                     color: $color-black
-                    grid-column: span 2
                     opacity: 1
-                    padding-top: 15px
+                    padding: 15px 0
                     position: relative
 
                 &__position
@@ -64,7 +65,15 @@
 
         .team-member
             &--has-desc
+                grid-column: span 2
                 grid-template-columns: repeat(2, 1fr)
+
+                .team-member
+                    &__info
+                        grid-column: span 2
+
+                    &__img
+                        grid-column: span 2
 
 @media screen and ( min-width: 768px )
     .wp-block-childress-team
@@ -72,4 +81,13 @@
 
         .team-member
             &--has-desc
+                grid-column: span 3
                 grid-template-columns: repeat(3, 1fr)
+
+                .team-member
+                    &__info
+                        grid-column: span 2
+                        padding-left: 30px
+
+                    &__img
+                        grid-column: span 1
