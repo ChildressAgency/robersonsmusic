@@ -12,6 +12,10 @@ registerBlockType( 'childress/container', {
             type: 'string',
             default: 'transparent'
         },
+        textColor: {
+            type: 'string',
+            default: '#000'
+        },
         includePadding: {
             type: 'boolean',
             default: true
@@ -19,10 +23,14 @@ registerBlockType( 'childress/container', {
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { classes, backgroundColor, includePadding } = attributes;
+        const { classes, backgroundColor, textColor, includePadding } = attributes;
 
         function setBackgroundColor( ...args ){
             setAttributes({ backgroundColor: args[0] });
+        }
+
+        function setTextColor( ...args ){
+            setAttributes({ textColor: args[0] });
         }
 
         return (
@@ -35,6 +43,11 @@ registerBlockType( 'childress/container', {
                                 value: backgroundColor,
                                 onChange: setBackgroundColor,
                                 label: 'Background Color'
+                            },
+                            {
+                                value: textColor,
+                                onChange: setTextColor,
+                                label: 'Text Color'
                             }
                         ]}
                     />
@@ -67,7 +80,7 @@ registerBlockType( 'childress/container', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className={ className + ' container-wrapper' } style={{ backgroundColor: backgroundColor }}>
+                <div className={ className + ' container-wrapper' } style={{ backgroundColor: backgroundColor, color: textColor }}>
                     <div className={ classes }>
                         <InnerBlocks />
                     </div>
@@ -77,10 +90,10 @@ registerBlockType( 'childress/container', {
     },
 
     save( { attributes } ) {
-        const { classes, backgroundColor, includePadding } = attributes;
+        const { classes, backgroundColor, textColor, includePadding } = attributes;
 
         return (
-            <div className={ 'wp-block-childress-container container-wrapper' } style={{ backgroundColor: backgroundColor }}>
+            <div className={ 'wp-block-childress-container container-wrapper' } style={{ backgroundColor: backgroundColor, color: textColor }}>
                 <div className={ classes + ( includePadding ? '' : ' container--no-padding' )}>
                     <InnerBlocks.Content />
                 </div>
