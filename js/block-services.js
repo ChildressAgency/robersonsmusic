@@ -71,9 +71,6 @@ registerBlockType( 'childress/services-service', {
         title: {
             type: 'string'
         },
-        desc: {
-            type: 'string'
-        },
         link: {
             type: 'string'
         },
@@ -89,45 +86,50 @@ registerBlockType( 'childress/services-service', {
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { title, desc, link, iconUrl, iconAlt, iconId } = attributes;
+        const { title, link, iconUrl, iconAlt, iconId } = attributes;
 
         return (
             <div className={ className + ' service' }>
-                <URLInputButton
-                    url={ link }
-                    onChange={ ( value ) => { setAttributes({ link: value }) } }
-                />
-                <MediaUpload
-                    label='Image'
-                    onSelect={ media => { setAttributes( { iconUrl: media.url, iconAlt: media.alt, iconId: media.id } ) } }
-                    type='image'
-                    value={ iconUrl }
-                    render={ ({ open }) => (
-                        <Button className={ iconId ? 'image-button' : 'button button-large' } onClick={ open }>
-                            { iconId ? <img src={ iconUrl } /> : 'Select Icon' }
-                        </Button>
-                    ) }
-                />
-                <h3>
-                    <PlainText
-                        value={ title }
-                        onChange={ ( value ) => { setAttributes({ title: value }) } }
-                        placeholder='Title'
+                <div className="service__img">
+                    <URLInputButton
+                        url={ link }
+                        onChange={ ( value ) => { setAttributes({ link: value }) } }
                     />
-                </h3>
-                <p>
-                    <PlainText
-                        value={ desc }
-                        onChange={ ( value ) => { setAttributes({ desc: value }) } }
-                        placeholder='Description'
+                    <MediaUpload
+                        label='Image'
+                        onSelect={ media => { setAttributes( { iconUrl: media.url, iconAlt: media.alt, iconId: media.id } ) } }
+                        type='image'
+                        value={ iconUrl }
+                        render={ ({ open }) => (
+                            <Button className={ iconId ? 'image-button' : 'button button-large' } onClick={ open }>
+                                { iconId ? <img src={ iconUrl } /> : 'Select Icon' }
+                            </Button>
+                        ) }
                     />
-                </p>
+                </div>
+                <div class="service__info">
+                    <h3 className='service__title'>
+                        <PlainText
+                            value={ title }
+                            onChange={ ( value ) => { setAttributes({ title: value }) } }
+                            placeholder='Title'
+                        />
+                    </h3>
+                    <p className='service__desc'>
+                        <InnerBlocks
+                            allowedBlocks={['core/paragraph']}
+                            template={[
+                                ['core/paragraph']
+                            ]}
+                        />
+                    </p>
+                </div>
             </div>
         );
     },
 
     save( { attributes } ) {
-        const { title, desc, link, iconUrl, iconAlt, iconId } = attributes;
+        const { title, link, iconUrl, iconAlt, iconId } = attributes;
 
         return (
             <div className='service'>
@@ -136,7 +138,7 @@ registerBlockType( 'childress/services-service', {
                 </div>
                 <div className="service__info">
                     <h3 className='service__title'>{ title }</h3>
-                    <p className='service__desc'>{ desc }</p>
+                    <p className='service__desc'><InnerBlocks.Content /></p>
                     <a className='service__link' href={ link }>Learn More<span className='service__link-line'></span></a>
                 </div>
             </div>
