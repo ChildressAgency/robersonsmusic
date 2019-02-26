@@ -89,13 +89,13 @@ registerBlockType( 'childress/reviews', {
         imageId: {
             type: 'number'
         },
-        celloUrl: {
+        instrumentUrl: {
             type: 'string'
         },
-        celloAlt: {
+        instrumentAlt: {
             type: 'string'
         },
-        celloId: {
+        instrumentId: {
             type: 'number'
         },
         title: {
@@ -111,52 +111,56 @@ registerBlockType( 'childress/reviews', {
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { imageUrl, imageAlt, imageId, celloUrl, celloAlt, celloId, title, subtitle } = attributes;
+        const { imageUrl, imageAlt, imageId, instrumentUrl, instrumentAlt, instrumentId, title, subtitle, includeHeader } = attributes;
 
         return (
             <Fragment>
                 <InspectorControls>
-                    <PanelBody
-                        title="Block Options">
+                    <PanelBody>
                         <ToggleControl
-                            label="Heading emphasis"
-                            help={ headingEmphasisTop ? 'Emphasis top' : 'Emphasis bottom' }
-                            checked={ headingEmphasisTop }
-                            onChange={ ( value ) => { setAttributes({ headingEmphasisTop: value }) } }
+                            label="Include Header"
+                            help={ includeHeader ? 'Include header' : 'DO NOT include header' }
+                            checked={ includeHeader }
+                            onChange={ ( value ) => { setAttributes({ includeHeader: value }) } }
                         />
                     </PanelBody>
                 </InspectorControls>
                 <section className={ className }>
-                    <div className='reviews-hero'>
-                        <MediaUpload
-                            label='Image'
-                            onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ) } }
-                            type='image'
-                            value={ imageUrl }
-                            render={ ({ open }) => (
-                                <Button className={ 'button button-large' } onClick={ open }>
-                                    { 'Select Background Image' }
-                                </Button>
-                            ) }
-                        />
-                        <img src={ imageUrl } alt={ imageAlt } className={ 'reviews-hero__img wp-image-' + imageId } />
-                        <h2 className='reviews-hero__title'>
-                            <PlainText
-                                value={ title }
-                                onChange={ ( value ) => { setAttributes({ title: value }) } }
-                                placeholder='Title'
+                    {
+                        includeHeader &&
+                        <div>
+                            <MediaUpload
+                                label='Image'
+                                onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ) } }
+                                type='image'
+                                value={ imageUrl }
+                                render={ ({ open }) => (
+                                    <Button className={ 'button button-large' } onClick={ open }>
+                                        { 'Select Background Image' }
+                                    </Button>
+                                ) }
                             />
-                        </h2>
-                    </div>
+                            <div className='reviews-hero'>
+                                <img src={ imageUrl } alt={ imageAlt } className={ 'reviews-hero__img wp-image-' + imageId } />
+                                <h2 className='reviews-hero__title'>
+                                    <PlainText
+                                        value={ title }
+                                        onChange={ ( value ) => { setAttributes({ title: value }) } }
+                                        placeholder='Title'
+                                    />
+                                </h2>
+                            </div>
+                        </div>
+                    }
                     <div className='reviews'>
                         <MediaUpload
-                            label='Cello'
-                            onSelect={ media => { setAttributes( { celloUrl: media.url, celloAlt: media.alt, celloId: media.id } ) } }
+                            label='Background Image'
+                            onSelect={ media => { setAttributes( { instrumentUrl: media.url, instrumentAlt: media.alt, instrumentId: media.id } ) } }
                             type='image'
-                            value={ celloUrl }
+                            value={ instrumentUrl }
                             render={ ({ open }) => (
-                                <Button className={ celloUrl ? 'image-button' : 'button button-large' } onClick={ open }>
-                                    { celloUrl ? <img src={ celloUrl } /> : 'Select Cello' }
+                                <Button className={ instrumentUrl ? 'image-button' : 'button button-large' } onClick={ open }>
+                                    { instrumentUrl ? <img src={ instrumentUrl } /> : 'Select Background Image' }
                                 </Button>
                             ) }
                         />
@@ -184,16 +188,19 @@ registerBlockType( 'childress/reviews', {
     },
 
     save( { attributes } ) {
-        const { imageUrl, imageAlt, imageId, celloUrl, celloAlt, celloId, title, subtitle } = attributes;
+        const { imageUrl, imageAlt, imageId, instrumentUrl, instrumentAlt, instrumentId, title, subtitle, includeHeader } = attributes;
 
         return (
             <section>
-                <div className='reviews-hero'>
-                    <img src={ imageUrl } alt={ imageAlt } className={ 'reviews-hero__img wp-image-' + imageId } />
-                    <h2 className='reviews-hero__title'>{ title }</h2>
-                </div>
+                {
+                    includeHeader &&
+                    <div className='reviews-hero'>
+                        <img src={ imageUrl } alt={ imageAlt } className={ 'reviews-hero__img wp-image-' + imageId } />
+                        <h2 className='reviews-hero__title'>{ title }</h2>
+                    </div>
+                }
                 <div className='reviews'>
-                    <img src={ celloUrl } alt={ celloAlt } className={ 'reviews__cello' } />
+                    <img src={ instrumentUrl } alt={ instrumentAlt } className={ 'reviews__instrument' } />
                     <div className='container'>
                         <h3 className='reviews__title'>{ subtitle }</h3>
                         <div className='reviews__slides'>
