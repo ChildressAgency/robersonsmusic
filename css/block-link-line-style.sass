@@ -1,0 +1,44 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-link-line
+    text-align: center
+
+    .link-line
+        &__link
+            +font-size(28)
+            color: $color-primary-alt
+            position: relative
+
+            &::before,
+            &::after
+                background-color: $color-primary
+                content: ' '
+                display: block
+                height: 2px
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+                width: 75px
+
+            &::before
+                right: 115%
+
+            &::after
+                left: 115%
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-link-line
+        text-align: left
+
+        .link-line
+            &__link
+                +font-size(20)
+
+                &::before
+                    display: none
+
+                &::after
+                    width: 150px

@@ -359,3 +359,33 @@ function price_boxes_block(){
     ) );
 }
 add_action( 'init', 'price_boxes_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// LINK W/ LINE                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function link_line_block(){
+    wp_register_script(
+        'link-line-script',
+        get_template_directory_uri() . '/js/block-link-line.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'link-line-editor-style',
+        get_template_directory_uri() . '/css/block-link-line-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'link-line-style',
+        get_template_directory_uri() . '/css/block-link-line-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/link-line', array(
+        'editor_script' => 'link-line-script',
+        'editor_style'  => 'link-line-editor-style',
+        'style'  => 'link-line-style',
+    ) );
+}
+add_action( 'init', 'link_line_block', 10, 0 );
