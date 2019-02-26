@@ -61,10 +61,9 @@ registerBlockType( 'childress/image-text', {
                             }
                         ]}
                     />
-                    <PanelBody
-                        title="Container Options">
+                    <PanelBody>
                         <SelectControl
-                            label="Container Width"
+                            label="Variant"
                             value={ classes ? classes : '' }
                             options={[
                                 {
