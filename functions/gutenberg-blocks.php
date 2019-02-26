@@ -329,3 +329,33 @@ function image_text_block(){
     ) );
 }
 add_action( 'init', 'image_text_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// PRICE BOXES                                                               //
+///////////////////////////////////////////////////////////////////////////////
+function price_boxes_block(){
+    wp_register_script(
+        'price-boxes-script',
+        get_template_directory_uri() . '/js/block-price-boxes.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'price-boxes-editor-style',
+        get_template_directory_uri() . '/css/block-price-boxes-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'price-boxes-style',
+        get_template_directory_uri() . '/css/block-price-boxes-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/price-boxes', array(
+        'editor_script' => 'price-boxes-script',
+        'editor_style'  => 'price-boxes-editor-style',
+        'style'  => 'price-boxes-style',
+    ) );
+}
+add_action( 'init', 'price_boxes_block', 10, 0 );
