@@ -37,12 +37,19 @@ registerBlockType( 'childress/image-text', {
         },
         headingEmphasisTop: {
             type: 'boolean',
-            default: 'true'
+            default: true
         },
+        includeBonusText: {
+            type: 'boolean',
+            default: false
+        },
+        bonusText: {
+            type: 'string'
+        }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { imageUrl, imageAlt, imageId, heading, backgroundColor, classes, headingEmphasisTop } = attributes;
+        const { imageUrl, imageAlt, imageId, heading, backgroundColor, classes, headingEmphasisTop, includeBonusText, bonusText } = attributes;
 
         function setBackgroundColor( ...args ){
             setAttributes({ backgroundColor: args[0] });
@@ -86,6 +93,15 @@ registerBlockType( 'childress/image-text', {
                                 onChange={ ( value ) => { setAttributes({ headingEmphasisTop: value }) } }
                             />
                         }
+                        {
+                            classes == 'image-text--small' &&
+                            <ToggleControl
+                                label="Bonus Text"
+                                help={ includeBonusText ? 'Include bonus text' : 'DO NOT include bonus text' }
+                                checked={ includeBonusText }
+                                onChange={ ( value ) => { setAttributes({ includeBonusText: value }) } }
+                            />
+                        }
                     </PanelBody>
                 </InspectorControls>
                 <section className={ className + ' image-text container ' + classes + ( classes == '' ? ( headingEmphasisTop ? ' image-text--heading-em-top' : ' image-text--heading-em-bottom' ) : '' ) }>
@@ -112,13 +128,26 @@ registerBlockType( 'childress/image-text', {
                             ['core/paragraph']
                         ]}
                     />
+                    {
+                        classes == 'image-text--small' && includeBonusText &&
+                        <p className='image-text__bonus'>
+                            <PlainText
+                                value={ bonusText }
+                                onChange={ ( value ) => { setAttributes({ bonusText: value }) } }
+                                placeholder='Bonus Text'
+                            />
+                        </p>
+                    }
                 </section>
             </Fragment>
         );
     },
 
     save( { attributes } ) {
-        const { imageUrl, imageAlt, imageId, heading, backgroundColor, classes, headingEmphasisTop } = attributes;
+        const { imageUrl, imageAlt, imageId, heading, backgroundColor, classes, headingEmphasisTop, includeBonusText, bonusText } = attributes;
+
+        var isSmall = classes == 'image-text--small';
+        var isBonus = isSmall && includeBonusText;
 
         return (
             <section className={ 'image-text container ' + classes + ( classes == '' ? ( headingEmphasisTop ? ' image-text--heading-em-top' : ' image-text--heading-em-bottom' ) : '' ) }>
@@ -128,19 +157,25 @@ registerBlockType( 'childress/image-text', {
                         <h2><RichText.Content value={ heading }/></h2>
                     </div>
                 }
-                <div className="image-text__img">
-                    <div className='image-text__background' style={{ backgroundColor: backgroundColor }}></div>
-                    <img src={ imageUrl } alt={ imageAlt } className={ 'wp-image-' + imageId } />
+                <div className='image-text__inner'>
+                    <div className="image-text__img">
+                        <div className='image-text__background' style={{ backgroundColor: backgroundColor }}></div>
+                        <img src={ imageUrl } alt={ imageAlt } className={ 'wp-image-' + imageId } />
+                    </div>
+                    <div className='image-text__text'>
+                        {
+                            classes == 'image-text--small' &&
+                            <div className='image-text__heading'>
+                                <h2><RichText.Content value={ heading }/></h2>
+                            </div>
+                        }
+                        <InnerBlocks.Content />
+                    </div>
                 </div>
-                <div className='image-text__text'>
-                    {
-                        classes == 'image-text--small' &&
-                        <div className='image-text__heading'>
-                            <h2><RichText.Content value={ heading }/></h2>
-                        </div>
-                    }
-                    <InnerBlocks.Content />
-                </div>
+                {
+                    isBonus &&
+                    <p className='image-text__bonus'>{ bonusText }</p>
+                }
             </section>
         );
     },
