@@ -389,3 +389,33 @@ function link_line_block(){
     ) );
 }
 add_action( 'init', 'link_line_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// CHECK LIST                                                                //
+///////////////////////////////////////////////////////////////////////////////
+function checklist_block(){
+    wp_register_script(
+        'checklist-script',
+        get_template_directory_uri() . '/js/block-checklist.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'checklist-editor-style',
+        get_template_directory_uri() . '/css/block-checklist-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'checklist-style',
+        get_template_directory_uri() . '/css/block-checklist-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/checklist', array(
+        'editor_script' => 'checklist-script',
+        'editor_style'  => 'checklist-editor-style',
+        'style'  => 'checklist-style',
+    ) );
+}
+add_action( 'init', 'checklist_block', 10, 0 );
