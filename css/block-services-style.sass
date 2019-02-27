@@ -7,9 +7,26 @@
     .services
         &__img
             margin-bottom: 30px
+            position: relative
 
             img
                 width: 100%
+
+            &--bg
+                margin-bottom: 60px
+                margin-left: auto
+                width: calc(100% - 30px)
+
+                &::before
+                    background-color: $color-primary
+                    content: ' '
+                    display: block
+                    height: calc(100% + 60px)
+                    left: -30px
+                    position: absolute
+                    top: -30px
+                    width: 70%
+                    z-index: -1
 
 .wp-block-childress-services-service
     align-items: center
@@ -59,6 +76,7 @@
 
 @media screen and ( min-width: 768px )
     .wp-block-childress-services
+        align-items: flex-start
         display: flex
 
         .services
@@ -66,6 +84,9 @@
                 flex: 1
                 margin-bottom: 0
                 margin-right: 30px
+
+                &--bg
+                    width: 100%
 
             &__list
                 flex: 1

@@ -13,44 +13,60 @@ registerBlockType( 'childress/services', {
         imageId: {
             type: 'number'
         },
+        showImageBg: {
+            type: 'boolean',
+            default: false
+        }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { imageUrl, imageAlt, imageId } = attributes;
+        const { imageUrl, imageAlt, imageId, showImageBg } = attributes;
 
         return (
-            <section className={ className + ' services' }>
-                <div className='services__img'>
-                    <MediaUpload
-                        label='Image'
-                        onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ) } }
-                        type='image'
-                        value={ imageUrl }
-                        render={ ({ open }) => (
-                            <Button className={ imageId ? 'image-button' : 'button button-large' } onClick={ open }>
-                                { imageId ? <img src={ imageUrl } /> : 'Select Image' }
-                            </Button>
-                        ) }
-                    />
-                </div>
-                <div className='services__list'>
-                    <InnerBlocks
-                        allowedBlocks={['childress/services-service']}
-                        template={[
-                            ['childress/services-service']
-                        ]}
-                    />
-                </div>
-            </section>
+            <Fragment>
+                <InspectorControls>
+                    <PanelBody>
+                        <ToggleControl
+                            label="Show Image Background"
+                            help={ showImageBg ? 'Show image background' : 'DO NOT show image background' } 
+                            checked={ showImageBg }
+                            onChange={ ( value ) => { setAttributes({ showImageBg: value }) } }
+                        />
+                    </PanelBody>
+                </InspectorControls>
+                <section className={ className + ' services' }>
+                    <div className='services__img'>
+                        <MediaUpload
+                            label='Image'
+                            onSelect={ media => { setAttributes( { imageUrl: media.url, imageAlt: media.alt, imageId: media.id } ) } }
+                            type='image'
+                            value={ imageUrl }
+                            render={ ({ open }) => (
+                                <Button className={ imageId ? 'image-button' : 'button button-large' } onClick={ open }>
+                                    { imageId ? <img src={ imageUrl } /> : 'Select Image' }
+                                </Button>
+                            ) }
+                        />
+                    </div>
+                    <div className='services__list'>
+                        <InnerBlocks
+                            allowedBlocks={['childress/services-service']}
+                            template={[
+                                ['childress/services-service']
+                            ]}
+                        />
+                    </div>
+                </section>
+            </Fragment>
         );
     },
 
     save( { attributes } ) {
-        const { imageUrl, imageAlt, imageId } = attributes;
+        const { imageUrl, imageAlt, imageId, showImageBg } = attributes;
 
         return (
             <section className='services container'>
-                <div className='services__img'>
+                <div className={ 'services__img' + ( showImageBg ? ' services__img--bg' : '' ) }>
                     <img src={ imageUrl } alt={ imageAlt } className={ 'wp-image-' + imageId } />
                 </div>
                 <div className='services__list'>
@@ -139,7 +155,10 @@ registerBlockType( 'childress/services-service', {
                 <div className="service__info">
                     <h3 className='service__title'>{ title }</h3>
                     <p className='service__desc'><InnerBlocks.Content /></p>
-                    <a className='service__link' href={ link }>Learn More<span className='service__link-line'></span></a>
+                    {
+                        link &&
+                        <a className='service__link' href={ link }>Learn More<span className='service__link-line'></span></a>
+                    }
                 </div>
             </div>
         );
