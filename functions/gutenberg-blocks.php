@@ -419,3 +419,33 @@ function checklist_block(){
     ) );
 }
 add_action( 'init', 'checklist_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// INSPIRATION BOXES                                                         //
+///////////////////////////////////////////////////////////////////////////////
+function inspiration_boxes_block(){
+    wp_register_script(
+        'inspiration-boxes-script',
+        get_template_directory_uri() . '/js/block-inspiration-boxes.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'inspiration-boxes-editor-style',
+        get_template_directory_uri() . '/css/block-inspiration-boxes-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'inspiration-boxes-style',
+        get_template_directory_uri() . '/css/block-inspiration-boxes-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/inspiration-boxes', array(
+        'editor_script' => 'inspiration-boxes-script',
+        'editor_style'  => 'inspiration-boxes-editor-style',
+        'style'  => 'inspiration-boxes-style',
+    ) );
+}
+add_action( 'init', 'inspiration_boxes_block', 10, 0 );
