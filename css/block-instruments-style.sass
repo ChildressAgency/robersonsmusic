@@ -1,0 +1,106 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-instruments
+    border-bottom: 4px solid $color-primary
+
+.wp-block-childress-instrument
+    display: flex
+    flex-direction: column
+
+    .instrument
+        &__img
+            margin: 0 auto
+
+        &__info
+            display: flex
+            flex-direction: column
+
+        &__title
+            @extend %font-myriad
+            +font-size(40)
+            align-self: center
+            border-bottom: 8px solid $color-primary
+            display: inline-block
+            font-weight: normal
+            padding-bottom: 10px
+            text-align: center
+
+            &::first-line
+                @extend %font-minion
+                +font-size(50)
+                color: $color-primary
+                font-weight: bold
+
+.wp-block-childress-instrument-list
+    padding-bottom: 30px
+
+    &.instrument-list
+        &--eligible
+            border-bottom: 1px solid $color-text-grey
+            margin-bottom: 30px
+
+            ul
+                @extend %font-minion
+                +font-size(20)
+                display: grid
+                grid-gap: 10px 0
+                grid-template-columns: 1fr 1fr
+
+        &--services
+            ul
+                @extend %font-myriad
+                +font-size(18)
+
+                li
+                    margin-bottom: 20px
+
+    .instrument-list
+        &__title
+            font-weight: bold
+
+    ul
+        list-style-type: none
+        margin-left: 30px
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-instrument
+        align-items: flex-start
+        flex-direction: row
+
+        .instrument
+            &__img
+                flex: 1
+                margin-right: -30px
+
+            &__info
+                flex: 2
+
+            &__title
+                align-self: flex-start
+                text-align: right
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-instruments
+        display: grid
+        grid-template-columns: 1fr 1fr
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-instrument
+        .instrument
+            &__title
+                +font-size(46)
+
+                &::first-line
+                    +font-size(56)
+
+    .wp-block-childress-instrument-list
+        &--eligible
+            ul
+                +font-size(24)
+
+        &--services
+            ul
+                +font-size(20)

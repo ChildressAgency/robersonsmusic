@@ -449,3 +449,33 @@ function inspiration_boxes_block(){
     ) );
 }
 add_action( 'init', 'inspiration_boxes_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// INSTRUCMENTS                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function instruments_block(){
+    wp_register_script(
+        'instruments-script',
+        get_template_directory_uri() . '/js/block-instruments.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'instruments-editor-style',
+        get_template_directory_uri() . '/css/block-instruments-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'instruments-style',
+        get_template_directory_uri() . '/css/block-instruments-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/instruments', array(
+        'editor_script' => 'instruments-script',
+        'editor_style'  => 'instruments-editor-style',
+        'style'  => 'instruments-style',
+    ) );
+}
+add_action( 'init', 'instruments_block', 10, 0 );

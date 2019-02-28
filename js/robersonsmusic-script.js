@@ -50,4 +50,39 @@ $(document).ready(function(){
         arrows:             false,
         adaptiveHeight:     true
     });
+
+
+    /**
+     * INSTRUMENTS
+     */
+    function instrumentsResizeList(){
+        $instruments = $( '.wp-block-childress-instruments' );
+
+        $instruments.each( function(){
+            $children = $( this ).children( '.wp-block-childress-instrument' );
+
+            $height = 0;
+
+            $children.each( function(){
+                $this = $( this ).find( '.instrument-list--eligible' );
+                $this.css( 'height', 'auto' );
+                $tempHeight = $this.outerHeight();
+
+                if( $tempHeight > $height ){
+                    $height = $tempHeight;
+                }
+            } );
+
+            if( $( window ).width() > 768 ){
+                $children.each( function(){
+                    $( this ).find( '.instrument-list--eligible' ).css( 'height', $height );
+                } );
+            }
+        });
+    }
+    instrumentsResizeList();
+
+    $( window ).resize( function(){
+        instrumentsResizeList();
+    } );
 });
