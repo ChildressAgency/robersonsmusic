@@ -53,6 +53,37 @@ iframe
 // HEADER                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
 
+.wp-block-button
+    &__link
+        @extend %font-myriad
+        +font-size(22)
+        background-color: $color-primary
+        border: 2px solid transparent
+        color: $color-white
+        padding: 5px 30px
+        transition: background-color .3s ease, border-color .3s ease, color .3s ease
+
+        &:hover
+            background-color: transparent
+            border-color: $color-primary
+            color: $color-primary
+            text-decoration: none
+
+    &.is-style-outline
+        .wp-block-button__link
+            background-color: transparent
+            border-color: $color-primary
+            border-radius: 3px
+            color: $color-primary
+
+            &:hover
+                background-color: $color-primary
+                color: $color-white
+
+    &.is-style-squared
+        .wp-block-button__link
+            border-radius: 3px
+
 .aligncenter
     display: block
 
