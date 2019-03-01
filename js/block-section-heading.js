@@ -17,31 +17,46 @@ registerBlockType( 'childress/section-heading', {
     attributes: {
         text: {
             type: 'string'
+        },
+        hasEmphasis: {
+            type: 'boolean',
+            default: false
         }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { text } = attributes;
+        const { text, hasEmphasis } = attributes;
 
         return (
-            <div className={ className }>
-                <InnerBlocks
-                    template={[
-                        ['core/heading']
-                    ]}
-                    templateLock='all'
-                />
-            </div>
+            <Fragment>
+                <InspectorControls>
+                    <PanelBody>
+                        <ToggleControl
+                            label='Emphasis'
+                            help={ hasEmphasis ? 'Emphasize on top line' : 'DO NOT emphasize top line' }
+                            checked={ hasEmphasis }
+                            onChange={ ( value ) => { setAttributes({ hasEmphasis: value }) } }
+                        />
+                    </PanelBody>
+                </InspectorControls>
+                <h2 className={ className + ' ' + ( hasEmphasis ? 'section-heading--emphasis' : '' ) }>
+                    <RichText
+                        value={ text }
+                        onChange={ ( value ) => { setAttributes({ text: value }) } }
+                        placeholder='Heading'
+                    />
+                </h2>
+            </Fragment>
         );
     },
 
     save( { attributes } ) {
-        const { text } = attributes;
+        const { text, hasEmphasis } = attributes;
 
         return (
-            <div>
-                <InnerBlocks.Content />
-            </div>
+            <h2 className={ ( hasEmphasis ? 'section-heading--emphasis' : '' ) }>
+                <RichText.Content value={ text } />
+            </h2>
         );
     },
 } );

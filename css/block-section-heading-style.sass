@@ -1,11 +1,22 @@
 @import '../_variables.sass'
 
 .wp-block-childress-section-heading
-    h2
-        +fluid-font(40, 60, 280, 992)
-        text-align: center
+    @extend %font-myriad
+    +fluid-font(40, 66, 280, 992)
+    font-weight: normal
+    line-height: 1em
+    text-align: center
+
+    &.section-heading--emphasis
+        padding-left: 120px
+        text-indent: -120px
+
+        &::first-line
+            @extend %font-minion
+            +font-size(76)
+            color: $color-primary
+            font-weight: bold
 
 @media screen and (min-width: 992px)
     .wp-block-childress-section-heading
-        h2
-            +font-size(60)
+        +font-size(66)
