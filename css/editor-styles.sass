@@ -1,5 +1,19 @@
 @import '../_variables.sass'
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+    color: inherit
+
+div,
+div::before, //sass-lint:disable-line force-pseudo-nesting
+div::after //sass-lint:disable-line force-pseudo-nesting
+    background-position: center center
+    background-size: cover
+
 .wp-block
     max-width: 1200px
 
@@ -16,9 +30,3 @@
             background-color: transparent
             border-color: $color-primary
             color: $color-primary
-
-div,
-div::before, //sass-lint:disable-line force-pseudo-nesting
-div::after //sass-lint:disable-line force-pseudo-nesting
-    background-position: center center
-    background-size: cover

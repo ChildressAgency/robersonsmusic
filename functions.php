@@ -46,7 +46,8 @@
 	// load fonts
 	function load_fonts() {
 		wp_enqueue_style( 'font-awesome', '//use.fontawesome.com/releases/v5.3.1/css/all.css' );
-		wp_enqueue_style( 'minion-myriad', 'https://use.typekit.net/nez8wct.css' );
+		wp_enqueue_style( 'minion-myriad', '//use.typekit.net/nez8wct.css' );
+		wp_enqueue_style( 'nunito-sans', '//fonts.googleapis.com/css?family=Nunito+Sans:400,600,700' );
 	}
 	add_action( 'wp_enqueue_scripts', 'load_fonts' );
 
@@ -81,6 +82,11 @@
 					'name'		=> 'Blue',
 					'slug'		=> 'blue',
 					'color'		=> '#1c60c6'
+				),
+				array(
+					'name'		=> 'Ribbon Blue',
+					'slug'		=> 'ribbon-blue',
+					'color'		=> '#1271ff'
 				),
 				array(
 					'name'		=> 'Light Blue',

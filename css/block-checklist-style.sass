@@ -1,0 +1,46 @@
+@import '../_variables.sass'
+
+
+.wp-block-childress-checklist
+    padding: 60px 0
+    position: relative
+
+    .checklist
+        &__icon
+            position: absolute
+            right: 15px
+            top: 15px
+
+        &__title
+            @extend %font-myriad
+            +font-size(46)
+            margin-bottom: 60px
+            text-align: center
+
+        &__list
+            list-style-type: none
+
+        &__item
+            +font-size(20)
+            margin-bottom: 30px
+            margin-left: 35px
+            position: relative
+
+            &::before
+                content: url('http://dev.childressagency.com/robersonsmusic/wp-content/uploads/2019/02/Path-623.png')
+                left: 0
+                position: absolute
+                top: 0
+                transform: translateX(-150%)
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-checklist
+        .checklist
+            &__list
+                display: grid
+                grid-gap: 30px 75px
+                grid-template-columns: 1fr 1fr
+
+            &__item
+                margin-bottom: 0
+                margin-left: 0

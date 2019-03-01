@@ -1,0 +1,57 @@
+@import '../_variables.sass'
+
+
+.wp-block-childress-icon-grid
+    display: grid
+    grid-gap: 1px
+
+.wp-block-childress-icon-grid-icon
+    background-color: $color-dark-bg
+    display: flex
+    flex-direction: column
+    padding: 30px 15px
+    transition: background-color .3s ease
+
+    &:hover
+        background-color: $color-primary
+        text-decoration: none
+
+    .icon-grid-icon
+        &__img
+            align-items: center
+            display: flex
+            height: 200px
+            justify-content: center
+            margin-bottom: 15px
+
+            img
+                max-height: 100%
+
+        &__title
+            +font-size(26)
+            align-self: center
+            color: $color-white
+            display: inline-block
+            margin: 0
+            text-align: center
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-icon-grid
+        grid-template-columns: repeat(2, 1fr)
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-icon-grid
+        grid-template-columns: repeat(4, 1fr)
+
+    .wp-block-childress-icon-grid-icon
+        .icon-grid-icon
+            &__title
+                +fluid-font(23, 26, 768, 992)
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-icon-grid-icon
+        padding: 30px
+
+        .icon-grid-icon
+            &__title
+                +font-size(26)

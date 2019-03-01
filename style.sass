@@ -14,7 +14,7 @@ p
     margin-bottom: 15px
 
 a
-    color: $color-primary
+    color: $color-primary-alt
     text-decoration: none
 
     &:hover
@@ -46,9 +46,49 @@ h2
 h3
     +fluid-font(28, 32, 280, 992)
 
+iframe
+    max-width: 100%
+
 ///////////////////////////////////////////////////////////////////////////////
 // HEADER                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
+
+.wp-block-button
+    &__link
+        @extend %font-myriad
+        +font-size(22)
+        background-color: $color-primary
+        border: 2px solid transparent
+        color: $color-white
+        padding: 5px 30px
+        transition: background-color .3s ease, border-color .3s ease, color .3s ease
+
+        &:hover
+            background-color: transparent
+            border-color: $color-primary
+            color: $color-primary
+            text-decoration: none
+
+    &.is-style-outline
+        .wp-block-button__link
+            background-color: transparent
+            border-color: $color-primary
+            border-radius: 3px
+            color: $color-primary
+
+            &:hover
+                background-color: $color-primary
+                color: $color-white
+
+    &.is-style-squared
+        .wp-block-button__link
+            border-radius: 3px
+
+.aligncenter
+    display: block
+
+.wp-block-columns
+    display: flex
 
 .header
     align-items: center
@@ -109,7 +149,7 @@ h3
             transition: color .3s ease
 
             &::before
-                background-color: $color-primary
+                background-color: $color-primary-alt
                 bottom: -5px
                 content: ' '
                 display: block
@@ -121,7 +161,7 @@ h3
                 width: 0
 
             &:hover
-                color: $color-primary
+                color: $color-primary-alt
                 text-decoration: none
 
                 &::before
@@ -270,6 +310,12 @@ h3
 .has-blue-color
     color: $color-primary
 
+.has-ribbon-blue-background-color
+    background-color: $color-primary-alt
+
+.has-ribbon-blue-color
+    color: $color-primary-alt
+
 .has-light-blue-background-color
     background-color: $color-primary-light
 
@@ -277,10 +323,10 @@ h3
     color: $color-primary-light
 
 .has-dark-blue-background-color
-    background-color: $color-primary-alt
+    background-color: $color-primary-dark
 
 .has-dark-blue-color
-    color: $color-primary-alt
+    color: $color-primary-dark
 
 .has-gold-background-color
     background-color: $color-secondary

@@ -1,0 +1,73 @@
+// sass-lint:disable nesting-depth
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-price-box
+    background-color: $color-dark-bg
+    color: $color-white
+    margin-bottom: 15px
+
+    .price-box
+        &__title
+            @extend %font-nunito-semibold
+            +font-size(36)
+            margin: 0
+            padding: 45px 15px
+            text-align: center
+
+        &__price-wrapper
+            background-color: $color-primary
+            padding: 30px 15px
+            text-align: center
+
+        &__price
+            @extend %font-nunito-bold
+            +font-size(50)
+            font-weight: bold
+            line-height: 1em
+            margin: 0
+            position: relative
+
+            sup
+                font-size: .5em
+                position: absolute
+                top: 0
+                transform: translateX(-100%)
+
+        &__price-subtitle
+            @extend %font-nunito
+            +font-size(26)
+
+        &__list
+            align-items: flex-start
+            display: flex
+            justify-content: center
+            padding: 30px 15px
+
+            ul
+                list-style-type: none
+                width: 150px
+
+                li
+                    +font-size(20)
+                    margin-bottom: 10px
+                    position: relative
+
+                    &::before
+                        content: url('http://dev.childressagency.com/robersonsmusic/wp-content/uploads/2019/02/MS332W.tif_1_.png')
+                        left: -30px
+                        position: absolute
+                        top: 0
+
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-price-boxes
+        display: flex
+
+    .wp-block-childress-price-box
+        flex: 1
+        margin-right: 5px
+
+        &:last-of-type
+            margin-right: 0

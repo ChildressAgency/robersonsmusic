@@ -58,18 +58,18 @@ registerBlockType( 'childress/passion', {
 
         return (
             <section className={ className + ' passion' }>
+                <MediaUpload
+                    label='Mix Blend Background'
+                    onSelect={ media => { setAttributes( { mixBlendUrl: media.url, mixBlendAlt: media.alt, mixBlendId: media.id } ) } }
+                    type='image'
+                    value={ mixBlendUrl }
+                    render={ ({ open }) => (
+                        <Button className={ 'button button-large' } onClick={ open }>
+                            { 'Select Background' }
+                        </Button>
+                    ) }
+                />
                 <div className='mix-blend'>
-                    <MediaUpload
-                        label='Mix Blend Background'
-                        onSelect={ media => { setAttributes( { mixBlendUrl: media.url, mixBlendAlt: media.alt, mixBlendId: media.id } ) } }
-                        type='image'
-                        value={ mixBlendUrl }
-                        render={ ({ open }) => (
-                            <Button className={ 'button button-large' } onClick={ open }>
-                                { 'Select Background' }
-                            </Button>
-                        ) }
-                    />
                     <img src={ mixBlendUrl } alt={ mixBlendAlt } className={ 'mix-blend__background wp-image-' + mixBlendId } />
                     <h2 className='mix-blend__text'>
                         <span className='mix-blend__text--big'>
@@ -88,6 +88,17 @@ registerBlockType( 'childress/passion', {
                     </h2>
                 </div>
                 <MediaUpload
+                    label='Treble'
+                    onSelect={ media => { setAttributes( { trebleUrl: media.url, trebleAlt: media.alt, trebleId: media.id } ) } }
+                    type='image'
+                    value={ trebleUrl }
+                    render={ ({ open }) => (
+                        <Button className={ 'button button-large' } onClick={ open }>
+                            { 'Select Treble Cleft' }
+                        </Button>
+                    ) }
+                />
+                <MediaUpload
                     label='Treble Background'
                     onSelect={ media => { setAttributes( { trebleImgUrl: media.url, trebleImgAlt: media.alt, trebleImgId: media.id } ) } }
                     type='image'
@@ -99,17 +110,7 @@ registerBlockType( 'childress/passion', {
                     ) }
                 />
                 <div className='treble'>
-                    <MediaUpload
-                        label='Treble'
-                        onSelect={ media => { setAttributes( { trebleUrl: media.url, trebleAlt: media.alt, trebleId: media.id } ) } }
-                        type='image'
-                        value={ trebleUrl }
-                        render={ ({ open }) => (
-                            <Button className={ trebleUrl ? 'image-button' : 'button button-large' } onClick={ open }>
-                                { trebleUrl ? <img src={ trebleUrl } /> : 'Select Treble Cleft' }
-                            </Button>
-                        ) }
-                    />
+                    <img src={ trebleUrl } />
                     <div className='treble__gradient'>
                         <img src={ trebleImgUrl } alt={ trebleImgAlt } className={ 'treble__cleft-img wp-image-' + trebleImgId } />
                     </div>
