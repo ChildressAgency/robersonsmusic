@@ -1,0 +1,33 @@
+// sass-lint:disable force-pseudo-nesting force-element-nesting
+
+@import '../_variables.sass'
+
+
+.wp-block-childress-icon-grid
+    display: block
+
+    .editor-block-list__layout
+        display: grid
+        grid-template-columns: repeat(4, 1fr)
+
+.wp-block-childress-icon-grid-icon
+    &:hover
+        background-color: $color-dark-bg
+
+    .icon-grid-icon
+        &__title
+            border-bottom: 1px solid $color-primary
+            min-width: 100px
+
+    .components-button:focus:enabled
+        background-color: transparent
+
+    .editor-url-input__button
+        align-self: center
+
+    .components-toolbar__control.components-button > svg
+        color: $color-white
+
+    .components-toolbar__control.components-button:not(:disabled).is-active > svg,
+    .components-toolbar__control.components-button:not(:disabled):hover > svg
+        color: $color-primary
