@@ -365,6 +365,54 @@ iframe
     color: $color-white
 
 
+///////////////////////////////////////////////////////////////////////////////
+// FORM                                                                      //
+///////////////////////////////////////////////////////////////////////////////
+
+.wpcf7-form
+    +font-size(22)
+    padding-right: 45px
+
+    label
+        +font-size(16)
+
+    p
+        line-height: 1em
+
+    textarea
+        +font-size(22)
+
+    p,
+    textarea,
+    label
+        @extend %font-myriad
+
+.wpcf7-form-control
+    +font-size(18)
+    border: 1px solid $color-grey
+    border-radius: 3px
+    margin-bottom: 10px
+    padding: 10px 20px
+    width: 100%
+
+    &.wpcf7-select
+        min-width: 33%
+        width: auto
+
+    &.wpcf7-submit
+        background-color: $color-primary
+        border: 2px solid transparent
+        color: $color-white
+        cursor: pointer
+        padding: 10px 30px
+        transition: background-color .3s ease, border-color .3s ease, color .3s ease
+        width: auto
+
+        &:hover
+            background-color: transparent
+            border-color: $color-primary
+            color: $color-primary
+            text-decoration: none
 
 ///////////////////////////////////////////////////////////////////////////////
 // FOOTER                                                                    //
