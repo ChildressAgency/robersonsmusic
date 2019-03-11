@@ -7,6 +7,7 @@
 
     function register_mysettings() { // whitelist options
         register_setting( 'theme_options', 'header-logo' );
+        register_setting( 'theme_options', 'blog-header-image' );
         register_setting( 'theme_options', 'office' );
         register_setting( 'theme_options', 'phone' );
         register_setting( 'theme_options', 'address' );
@@ -38,8 +39,16 @@
                     <tr valign="top">
                         <th scope="row">Header Logo</th>
                         <td style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <img class="logo" src="<?php echo get_option('header-logo'); ?>" height=00"/>
+                            <img class="logo" src="<?php echo get_option('header-logo'); ?>" height="100"/>
                             <input class="logo_url" type="text" name="header-logo" size="60" value="<?php echo get_option('header-logo'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">Default Blog Header Image</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('blog-header-image'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="blog-header-image" size="60" value="<?php echo get_option('blog-header-image'); ?>">
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
                     </tr>
