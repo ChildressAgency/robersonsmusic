@@ -15,6 +15,22 @@ function load_dependencies(){
 add_action( 'init', 'load_dependencies', 10, 0 );
 
 ///////////////////////////////////////////////////////////////////////////////
+// POST TEMPLATE                                                             //
+///////////////////////////////////////////////////////////////////////////////
+function post_template(){
+    wp_register_script(
+        'post-template-script',
+        get_template_directory_uri() . '/js/template-post.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    register_block_type('childress/post-template', array(
+        'editor_script' => 'post-template-script',
+    ) );
+}
+add_action( 'init', 'post_template', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
 // CONTAINER                                                                 //
 ///////////////////////////////////////////////////////////////////////////////
 function container_block(){

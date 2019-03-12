@@ -75,6 +75,14 @@
 	}
 	add_action( 'enqueue_block_editor_assets', 'custom_editor_styles' );
 
+	function custom_post_template() {
+		$post_type_object = get_post_type_object( 'post' );
+		$post_type_object->template = array( array( 'childress/post-template' ) );
+
+		$post_type_object->template_lock = 'all';
+	}
+	add_action( 'init', 'custom_post_template' );
+
 	function robersonsmusic_color_palette(){
 		add_theme_support(
 			'editor-color-palette', array(

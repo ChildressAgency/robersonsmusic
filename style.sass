@@ -364,6 +364,117 @@ iframe
 .has-white-color
     color: $color-white
 
+///////////////////////////////////////////////////////////////////////////////
+// BLOG                                                                      //
+///////////////////////////////////////////////////////////////////////////////
+
+.blog-post
+    ul
+        +font-size(20)
+        list-style-type: none
+        padding-left: 45px
+
+        li
+            margin-bottom: 15px
+
+    hr
+        background-color: $color-grey
+        border: 0
+        height: 1px
+
+    &__info
+        margin-bottom: 30px
+
+    &__title
+        +font-size(32)
+        color: $color-primary
+        margin-bottom: 0
+
+    &__date
+        +font-size(20)
+        color: $color-text-grey
+
+    &__content
+        margin-bottom: 30px
+
+    &__meta
+        margin-bottom: 30px
+
+    &__cats,
+    &__tags
+        align-items: flex-start
+        display: flex
+        flex-wrap: wrap
+        line-height: 1em
+        margin-bottom: 15px
+
+        a
+            +font-size(18)
+            color: $color-text-grey
+            margin-left: 5px
+
+            &:hover
+                color: $color-primary
+
+            &:first-of-type
+                margin-left: 0
+
+        i
+            color: $color-text-grey
+            width: 30px
+
+    &__prev-next
+        border-top: 1px solid $color-grey
+        display: flex
+        justify-content: space-between
+        margin-bottom: 60px
+        padding-top: 15px
+
+    &__related
+        h2
+            +font-size(26)
+            color: $color-primary
+            margin-bottom: 0
+
+        p
+            color: $color-text-grey
+
+    &__related-posts
+        display: grid
+        grid-gap: 30px
+        grid-template-columns: repeat(3, 1fr)
+
+    &__related-post
+        img
+            display: block
+            margin-bottom: -2px
+            width: 100%
+
+        h3
+            +font-size(20)
+            background-color: $color-primary
+            color: $color-white
+            padding: 15px 20px
+
+.wp-block-childress-hero
+    &.hero--blog
+        margin-bottom: 60px
+
+.wp-block-childress-image-text
+    &.image-text--blog
+        margin-bottom: 75px
+
+        .image-text
+            &__heading
+                margin-bottom: 75px
+                text-align: center
+                width: 100%
+
+            &__background
+                background-color: $color-primary
+                left: -45px
+                right: auto
+                width: 50%
 
 ///////////////////////////////////////////////////////////////////////////////
 // FORM                                                                      //
