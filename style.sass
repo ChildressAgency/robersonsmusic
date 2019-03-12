@@ -431,6 +431,8 @@ iframe
         padding-top: 15px
 
     &__related
+        margin-bottom: 30px
+
         h2
             +font-size(26)
             color: $color-primary
@@ -456,6 +458,81 @@ iframe
             color: $color-white
             padding: 15px 20px
 
+.comments
+    margin-bottom: 60px
+
+    &__title
+        +font-size(26)
+        color: $color-primary
+        line-height: 1
+        margin-bottom: 0
+
+    &__subtitle
+        +font-size(20)
+        color: $color-text-grey
+
+.comment-form
+    display: flex
+    flex-direction: column
+    padding: 0 45px
+
+    #author, // sass-lint:disable-line no-ids
+    #email, // sass-lint:disable-line no-ids
+    #comment // sass-lint:disable-line no-ids
+        @extend %font-myriad
+        +font-size(18)
+        border: 1px solid $color-grey
+        border-radius: 3px
+        margin-bottom: 10px
+        padding: 10px 20px
+        width: 100%
+
+    .submit
+        @extend %font-myriad
+        +font-size(22)
+        background-color: $color-primary
+        border: 2px solid transparent
+        border-radius: 3px
+        color: $color-white
+        cursor: pointer
+        padding: 5px 30px
+        transition: background-color .3s ease, border-color .3s ease, color .3s ease
+
+        &:hover
+            background-color: transparent
+            border-color: $color-primary
+            color: $color-primary
+            text-decoration: none
+
+.comment-respond
+    margin-top: 30px
+
+.comment
+    margin-bottom: 30px
+    padding-left: 45px
+
+    &__name
+        +font-size(20)
+        color: $color-primary
+        margin-bottom: 0
+
+    &__date
+        +font-size(20)
+        color: $color-text-grey
+
+    &__content
+        align-items: flex-start
+        display: flex
+
+    &__img
+        border-radius: 50%
+        margin-right: 15px
+
+    &__text
+        border-bottom: 1px solid $color-grey
+        flex: 1
+        padding-bottom: 10px
+
 .wp-block-childress-hero
     &.hero--blog
         margin-bottom: 60px
@@ -472,9 +549,12 @@ iframe
 
             &__background
                 background-color: $color-primary
-                left: -45px
+                left: -30px
                 right: auto
                 width: 50%
+
+            &__img
+                margin-left: auto
 
 ///////////////////////////////////////////////////////////////////////////////
 // FORM                                                                      //
