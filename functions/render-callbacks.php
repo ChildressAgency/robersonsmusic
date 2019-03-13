@@ -3,16 +3,19 @@
 function post_display_callback( $attributes, $content ){
     $result = '<section class="wp-block-childress-post-display post-display container">';
 
-    // if( isset( $attributes['category'] ) )
-    //     $terms = explode( ',', $attributes['category'] );
-    // else
-    //     $terms = array( 'elite-1' );
+    if( isset( $attributes['selectedCategory'] ) ){
+        $terms = explode( ',', $attributes['selectedCategory'] );
+    }
+    else{
+        $terms = array( 'news-updates' );
+    }
 
     $args = array(
         'posts_per_page'    => 5,
         'post_type'         => 'post',
         'orderby'           => 'date',
         'order'             => 'DESC',
+        'category_name'     => $terms[0]
     );
 
     $postIndex = 0;
