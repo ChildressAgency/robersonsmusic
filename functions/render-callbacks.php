@@ -1,8 +1,7 @@
 <?php
 
 function post_display_callback( $attributes, $content ){
-    $result = '<section class="wp-block-childress-post-display post-display">
-                <div class="container">';
+    $result = '<section class="wp-block-childress-post-display post-display container">';
 
     // if( isset( $attributes['category'] ) )
     //     $terms = explode( ',', $attributes['category'] );
@@ -10,11 +9,13 @@ function post_display_callback( $attributes, $content ){
     //     $terms = array( 'elite-1' );
 
     $args = array(
-        'posts_per_page'    => 3,
+        'posts_per_page'    => 5,
         'post_type'         => 'post',
         'orderby'           => 'date',
         'order'             => 'DESC',
     );
+
+    $postIndex = 0;
 
     $query = new WP_Query( $args );
 
@@ -43,18 +44,22 @@ function post_display_callback( $attributes, $content ){
                 $inner = $template['innerBlocks'];
             }
 
-            // echo '<pre>';
-            // echo var_dump( $template );
-            // echo '</pre>';
+            // put the last word in the heading on a new line
+            $heading = get_the_category()[0]->name;
+            $last_word_start = strrpos( $heading ,' ' ) + 1;
+            $first_line = substr( $heading, 0, $last_word_start );
+            $second_line = substr( $heading, $last_word_start );
+            $heading = $first_line . '<br/>' . $second_line;
 
-            // $result .= '<img src="' . $attr['imageUrl'] . '" alt="' . $attr['imageAlt'] . '" class="wp-image-' . $attr['imageId'] . '" />'
-            //     . '<h3>' . get_the_title() . '</h3>';
+            $result .= '<section class="wp-block-childress-image-text image-text image-text--post-display container image-text--heading-em-top">';
 
-            $result .= '<section class="wp-block-childress-image-text image-text image-text--post-display container image-text--heading-em-top">
-                <div class="image-text__heading">
-                    <h2>' . get_the_category()[0]->name . '</h2>
-                </div>
-                <div class="image-text__inner">
+            if( $postIndex == 0 ){
+                $result .= '<div class="image-text__heading">
+                    <h2>' . $heading . '</h2>
+                </div>';
+            }
+
+            $result .= '<div class="image-text__inner">
                     <div class="image-text__img">
                         <div class="image-text__background"></div>
                         <img src="' . $attr['imageUrl'] . '" alt="' . $attr['imageAlt'] . '" class="wp-image-' . $attr['imageId'] . '" />
@@ -65,16 +70,17 @@ function post_display_callback( $attributes, $content ){
 
             $result .= mb_strimwidth( $inner[0]['innerHTML'], 0, 300, '...' );
 
-            $result .= '</div>
+            $result .= '<div class="wp-block-childress-link-line link-line"><a class="link-line__link" href="' . get_the_permalink() . '">Read More</a></div>
+                    </div>
                 </div>
             </section>';
 
+            $postIndex++;
             wp_reset_postdata();
         }
     }
 
-    $result .= '</div>
-            </section>';
+    $result .= '</section>';
 
     return $result;
 }
