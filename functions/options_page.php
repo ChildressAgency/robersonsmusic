@@ -8,6 +8,7 @@
     function register_mysettings() { // whitelist options
         register_setting( 'theme_options', 'header-logo' );
         register_setting( 'theme_options', 'blog-header-image' );
+        register_setting( 'theme_options', 'maintenance-guide-header-image' );
         register_setting( 'theme_options', 'office' );
         register_setting( 'theme_options', 'phone' );
         register_setting( 'theme_options', 'address' );
@@ -44,11 +45,21 @@
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
                     </tr>
+
                     <tr valign="top">
                         <th scope="row">Default Blog Header Image</th>
                         <td style="display: flex; flex-direction: column; align-items: flex-start;">
                             <img class="logo" src="<?php echo get_option('blog-header-image'); ?>" height="100"/>
                             <input class="logo_url" type="text" name="blog-header-image" size="60" value="<?php echo get_option('blog-header-image'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Default Maintenance Guide Header Image</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('maintenance-guide-header-image'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="maintenance-guide-header-image" size="60" value="<?php echo get_option('maintenance-guide-header-image'); ?>">
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
                     </tr>

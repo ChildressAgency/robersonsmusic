@@ -40,7 +40,7 @@
                 <?php if( isset( $attr['headingBgUrl'] ) ){ ?>
                     <img src='<?php echo $attr["headingBgUrl"]; ?>' alt='<?php echo $attr["headingBgAlt"]; ?>' class='hero__img wp-image-<?php echo $attr["headingBgId"]; ?>' />
                 <?php } else { ?>
-                    <img src='<?php echo get_option( 'blog-header-image' ); ?>' class='hero__img' />
+                    <img src='<?php echo get_option( 'maintenance-guide-header-image' ); ?>' class='hero__img' />
                 <?php }?>
 
                 <?php if( isset( $attr['heading'] ) ){ ?>
