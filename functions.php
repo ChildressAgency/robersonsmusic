@@ -83,6 +83,25 @@
 	}
 	add_action( 'init', 'custom_post_template' );
 
+	function create_post_type_maintenance_guides() {
+		register_post_type( 'maintenance-guides',
+			array(
+				'labels' => array(
+					'name' => __( 'Maintenance Guides' ),
+					'singular_name' => __( 'Maintenance Guide' )
+				),
+				'public' => true,
+				'has_archive' => false,
+				'show_in_rest' => true,
+				'template' => array(
+					array( 'childress/maintenance-guide-template', array() )
+				),
+				'templateLock' => 'all'
+			)
+		);
+	}
+	add_action( 'init', 'create_post_type_maintenance_guides', 0 );
+
 	function robersonsmusic_color_palette(){
 		add_theme_support(
 			'editor-color-palette', array(

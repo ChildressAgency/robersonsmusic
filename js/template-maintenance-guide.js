@@ -1,5 +1,5 @@
-registerBlockType( 'childress/post-template', {
-    title: 'Post Template',
+registerBlockType( 'childress/maintenance-guide-template', {
+    title: 'Maintenance Guide Template',
     icon: 'admin-post',
     category: 'custom-blocks',
     parent: false,
@@ -15,7 +15,8 @@ registerBlockType( 'childress/post-template', {
             type: 'number'
         },
         heading: {
-            type: 'string'
+            type: 'string',
+            default: 'BLOG'
         },
         headingBgUrl: {
             type: 'string'

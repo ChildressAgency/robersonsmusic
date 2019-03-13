@@ -2,19 +2,18 @@
 
     <?php if( have_posts() ): while( have_posts() ): the_post(); ?>
         <?php 
-        global $post;
         $blocks = '';
         $projectTemplate = '';
         $inner = '';
         $attr = '';
 
-        if( has_blocks( $post->post_content ) ){
-            $blocks = parse_blocks( $post->post_content );
+        if( has_blocks( get_the_content() ) ){
+            $blocks = parse_blocks( get_the_content() );
         } 
 
         if( $blocks ){
             foreach( $blocks as $block ){
-                if( 'childress/post-template' == $block['blockName'] ){
+                if( 'childress/maintenance-guide-template' == $block['blockName'] ){
                     $projectTemplate = $block;
 
                     $inner = $block['innerBlocks'];
@@ -24,13 +23,14 @@
 
         if( $projectTemplate ){
             $attr = $projectTemplate['attrs'];
-        } 
+        }
 
         // put the last word in the heading on a new line
-        $heading = get_the_category()[0]->name;
-        $last_word_start = strrpos( $heading ,' ' ) + 1;
-        $first_line = substr( $heading, 0, $last_word_start );
-        $second_line = substr( $heading, $last_word_start );
+        // $heading = get_the_category()[0]->name;
+        $category = 'Maintenance Guide';
+        $last_word_start = strrpos( $category ,' ' ) + 1;
+        $first_line = substr( $category, 0, $last_word_start );
+        $second_line = substr( $category, $last_word_start );
         $heading = $first_line . '<br/>' . $second_line;
 
         $terms = get_the_terms( $post->ID, 'category' ); ?>
@@ -46,20 +46,22 @@
                 <?php if( isset( $attr['heading'] ) ){ ?>
                     <h2 class='hero__title'><?php echo $attr['heading']; ?></h2>
                 <?php } else { ?>
-                    <h2 class='hero__title'>BLOG</h2>
+                    <h2 class='hero__title'>REPAIRS</h2>
                 <?php } ?>
             </section>
 
             <section class='wp-block-childress-image-text image-text image-text--blog container image-text--heading-em-top'>
                 <div class='image-text__heading'>
-                    <h2><?php echo get_the_category()[0]->name; ?></h2>
+                    <h2><?php echo $heading ?></h2>
                 </div>
-                <div class='image-text__inner'>
-                    <div class="image-text__img">
-                        <div class='image-text__background'></div>
-                        <img src='<?php echo $attr['imageUrl']; ?>' alt='<?php echo $attr['imageAlt']; ?>' class='wp-image-<?php echo $attr['imageId']; ?>' />
+                <?php if( $attr['imageUrl'] ){ ?>
+                    <div class='image-text__inner'>
+                        <div class="image-text__img">
+                            <div class='image-text__background'></div>
+                            <img src='<?php echo $attr['imageUrl']; ?>' alt='<?php echo $attr['imageAlt']; ?>' class='wp-image-<?php echo $attr['imageId']; ?>' />
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
             </section>
 
             <div class="container">
@@ -76,7 +78,7 @@
 
                 <section class='blog-post__meta'>
                     <div class='blog-post__cats'>
-                        <a href='<?php echo home_url( get_the_category()[0]->slug ); ?>'><i class="fas fa-folder-open"></i><?php echo get_the_category()[0]->name; ?></a>
+                        <i class="fas fa-folder-open"></i><?php echo $category; ?>
                     </div>
                     <?php 
                     $tags = get_the_tags();

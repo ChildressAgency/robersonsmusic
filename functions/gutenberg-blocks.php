@@ -31,6 +31,22 @@ function post_template(){
 add_action( 'init', 'post_template', 10, 0 );
 
 ///////////////////////////////////////////////////////////////////////////////
+// MAINTENANCE GUIDE TEMPLATE                                                //
+///////////////////////////////////////////////////////////////////////////////
+function maintenance_guide_template(){
+    wp_register_script(
+        'maintenance-guide-template-script',
+        get_template_directory_uri() . '/js/template-maintenance-guide.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    register_block_type('childress/maintenance-guide-template', array(
+        'editor_script' => 'maintenance-guide-template-script',
+    ) );
+}
+add_action( 'init', 'maintenance_guide_template', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
 // CONTAINER                                                                 //
 ///////////////////////////////////////////////////////////////////////////////
 function container_block(){
