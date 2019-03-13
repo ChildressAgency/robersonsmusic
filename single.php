@@ -30,8 +30,12 @@
 
         <div class="blog-post">
             <section class='wp-block-childress-hero hero hero--blog'>
-                <img src='<?php echo get_option( 'blog-header-image' ); ?>' class='hero__img' />
-                <h2 class='hero__title'>BLOG</h2>
+                <?php if( $attr['headingBgUrl'] ){ ?>
+                    <img src='<?php echo $attr["headingBgUrl"]; ?>' alt='<?php echo $attr["headingBgAlt"]; ?>' class='hero__img wp-image-<?php echo $attr["headingBgId"]; ?>' />
+                <?php } else { ?>
+                    <img src='<?php echo get_option( 'blog-header-image' ); ?>' class='hero__img' />
+                <?php } ?>
+                <h2 class='hero__title'><?php echo $attr['heading']; ?></h2>
             </section>
 
             <section class='wp-block-childress-image-text image-text image-text--blog container image-text--heading-em-top'>
