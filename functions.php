@@ -75,6 +75,38 @@
 	}
 	add_action( 'enqueue_block_editor_assets', 'custom_editor_styles' );
 
+	function custom_post_template() {
+		$post_type_object = get_post_type_object( 'post' );
+		$post_type_object->template = array( array( 'childress/post-template' ) );
+
+		$post_type_object->template_lock = 'all';
+	}
+	add_action( 'init', 'custom_post_template' );
+
+	function create_post_type_maintenance_guides() {
+		register_post_type( 'maintenance-guides',
+			array(
+				'labels' => array(
+					'name' => __( 'Maintenance Guides' ),
+					'singular_name' => __( 'Maintenance Guide' )
+				),
+				'public' => true,
+				'has_archive' => false,
+				'show_in_rest' => true,
+				'supports' => array(
+					'title',
+					'comments',
+					'editor'
+				),
+				'template' => array(
+					array( 'childress/maintenance-guide-template', array() )
+				),
+				'templateLock' => 'all'
+			)
+		);
+	}
+	add_action( 'init', 'create_post_type_maintenance_guides', 0 );
+
 	function robersonsmusic_color_palette(){
 		add_theme_support(
 			'editor-color-palette', array(
@@ -136,4 +168,5 @@
 	include "functions/options_page.php";
 	include "functions/custom-nav-walker.php";
 	include "functions/gutenberg-blocks.php";
+	include "functions/render-callbacks.php";
 ?>

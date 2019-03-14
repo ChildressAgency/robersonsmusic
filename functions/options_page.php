@@ -7,6 +7,11 @@
 
     function register_mysettings() { // whitelist options
         register_setting( 'theme_options', 'header-logo' );
+        register_setting( 'theme_options', 'blog-header-image' );
+        register_setting( 'theme_options', 'maintenance-guide-header-image' );
+        register_setting( 'theme_options', 'footer-separator' );
+        register_setting( 'theme_options', 'footer-top-hat' );
+        register_setting( 'theme_options', 'ssl-cert' );
         register_setting( 'theme_options', 'office' );
         register_setting( 'theme_options', 'phone' );
         register_setting( 'theme_options', 'address' );
@@ -38,8 +43,53 @@
                     <tr valign="top">
                         <th scope="row">Header Logo</th>
                         <td style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <img class="logo" src="<?php echo get_option('header-logo'); ?>" height=00"/>
+                            <img class="logo" src="<?php echo get_option('header-logo'); ?>" height="100"/>
                             <input class="logo_url" type="text" name="header-logo" size="60" value="<?php echo get_option('header-logo'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Default Blog Header Image</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('blog-header-image'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="blog-header-image" size="60" value="<?php echo get_option('blog-header-image'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Default Maintenance Guide Header Image</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('maintenance-guide-header-image'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="maintenance-guide-header-image" size="60" value="<?php echo get_option('maintenance-guide-header-image'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Footer Separator</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('footer-separator'); ?>" height="25"/>
+                            <input class="logo_url" type="text" name="footer-separator" size="60" value="<?php echo get_option('footer-separator'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Footer Top Hat</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('footer-top-hat'); ?>" height="25"/>
+                            <input class="logo_url" type="text" name="footer-top-hat" size="60" value="<?php echo get_option('footer-top-hat'); ?>">
+                            <a href="#" class="logo_upload">Set Image</a>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">SSL Cert</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('ssl-cert'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="ssl-cert" size="60" value="<?php echo get_option('ssl-cert'); ?>">
                             <a href="#" class="logo_upload">Set Image</a>
                         </td>
                     </tr>

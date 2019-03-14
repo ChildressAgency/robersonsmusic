@@ -9,11 +9,11 @@
 
         if( has_blocks( get_the_content() ) ){
             $blocks = parse_blocks( get_the_content() );
-        }
+        } 
 
         if( $blocks ){
             foreach( $blocks as $block ){
-                if( 'childress/post-template' == $block['blockName'] ){
+                if( 'childress/maintenance-guide-template' == $block['blockName'] ){
                     $projectTemplate = $block;
 
                     $inner = $block['innerBlocks'];
@@ -23,10 +23,10 @@
 
         if( $projectTemplate ){
             $attr = $projectTemplate['attrs'];
-        } 
+        }
 
         // put the last word in the heading on a new line
-        $category = get_the_category()[0]->name;
+        $category = 'Maintenance Guide';
         $last_word_start = strrpos( $category ,' ' ) + 1;
         $first_line = substr( $category, 0, $last_word_start );
         $second_line = substr( $category, $last_word_start );
@@ -39,13 +39,13 @@
                 <?php if( isset( $attr['headingBgUrl'] ) ){ ?>
                     <img src='<?php echo $attr["headingBgUrl"]; ?>' alt='<?php echo $attr["headingBgAlt"]; ?>' class='hero__img wp-image-<?php echo $attr["headingBgId"]; ?>' />
                 <?php } else { ?>
-                    <img src='<?php echo get_option( 'blog-header-image' ); ?>' class='hero__img' />
+                    <img src='<?php echo get_option( 'maintenance-guide-header-image' ); ?>' class='hero__img' />
                 <?php }?>
 
                 <?php if( isset( $attr['heading'] ) ){ ?>
                     <h2 class='hero__title'><?php echo $attr['heading']; ?></h2>
                 <?php } else { ?>
-                    <h2 class='hero__title'>BLOG</h2>
+                    <h2 class='hero__title'>REPAIRS</h2>
                 <?php } ?>
             </section>
 

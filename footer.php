@@ -3,15 +3,16 @@
         <div class="footer__grid">
             <div class="footer__grid-section">
                 <h3 class="footer__section-heading">Our Location</h3>
-                <img class="footer__squiggle" src="wp-content/uploads/2018/11/squiggly-underline.png" alt="">
+                <!-- <img class="footer__squiggle" src="/wp-content/uploads/2018/11/squiggly-underline.png" alt=""> -->
+                <img class="footer__squiggle" src="<?php echo get_option( 'footer-separator' ); ?>" alt="">
                 <p><?php echo get_option( 'address' ); ?></p>
                 <p><strong>Hours:</strong> <?php echo get_option( 'hours' ); ?></p>
             </div>
             <div class="footer__grid-section">
                 <h3 class="footer__section-heading">Contact Us</h3>
-                <img class="footer__squiggle" src="wp-content/uploads/2018/11/squiggly-underline.png" alt="">
+                <img class="footer__squiggle" src="<?php echo get_option( 'footer-separator' ); ?>" alt="">
                 <p><a href="tel:<?php echo get_option( 'phone' ); ?>"><?php echo get_option( 'phone' ); ?></a></p>
-                <img src="wp-content/uploads/2018/11/tophat.png" alt="top hat">
+                <img src="<?php echo get_option( 'footer-top-hat' ); ?>" alt="top hat">
                 <h3 class="footer__section-heading">We're Social</h3>
                 <div class="footer__social">
                     <?php if( get_option( 'facebook' ) ): ?><a href="<?php echo get_option( 'facebook' ); ?>"><i class="fab fa-facebook-f"></i></a><?php endif; ?>
@@ -23,12 +24,12 @@
             </div>
             <div class="footer__grid-section">
                 <h3 class="footer__section-heading">Get Our Email Updates</h3>
-                <img class="footer__squiggle" src="wp-content/uploads/2018/11/squiggly-underline.png" alt="">
+                <img class="footer__squiggle" src="<?php echo get_option( 'footer-separator' ); ?>" alt="">
                 <p>Connect with us. We'll add you to our email updates.</p>
                 <a href="#_" class="btn btn--primary">Connect</a>
             </div>
             <div class="footer__grid-section">
-                <img src="wp-content/uploads/2018/11/ssl-cert.png" alt="ssl cert">
+                <img src="<?php echo get_option( 'ssl-cert' ); ?>" alt="ssl cert">
                 <h3 class="footer__section-heading">SSL Certificate</h3>
                 <p>Forms and Payment are Secure.</p>
             </div>
