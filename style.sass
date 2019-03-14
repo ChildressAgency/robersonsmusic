@@ -138,9 +138,6 @@ iframe
                 text-decoration: underline
 
     .navbar
-        &__item
-            overflow: hidden
-
         &__link
             @extend %font-myriad
             +font-size(24)
@@ -166,7 +163,7 @@ iframe
 
                 &::before
                     bottom: -2px
-                    width: 50%
+                    width: 70%
 
 .navbar
     &__toggler
@@ -192,10 +189,10 @@ iframe
         transition: .3s max-height ease
 
     &__item
-        margin-left: 20px
-        margin-right: 20px
         padding-bottom: 15px
         padding-top: 5px
+        text-align: center
+        width: 100%
 
         &::before
             display: none
