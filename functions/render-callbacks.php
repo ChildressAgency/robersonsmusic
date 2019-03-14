@@ -71,7 +71,11 @@ function post_display_callback( $attributes, $content ){
                         <h2>' . get_the_title() . '</h2>
                         <p class="image-text__date">' . get_the_date() . '</p>';
 
-            $result .= mb_strimwidth( $inner[0]['innerHTML'], 0, 300, '...' );
+            if( get_the_excerpt() ){
+                $result .= '<p>' . get_the_excerpt() . '</p>';
+            } else {
+                $result .= mb_strimwidth( $inner[0]['innerHTML'], 0, 300, '...' );
+            }
 
             $result .= '<div class="wp-block-childress-link-line link-line"><a class="link-line__link" href="' . get_the_permalink() . '">Read More</a></div>
                     </div>
