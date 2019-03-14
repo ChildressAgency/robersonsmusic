@@ -93,6 +93,11 @@
 				'public' => true,
 				'has_archive' => false,
 				'show_in_rest' => true,
+				'supports' => array(
+					'title',
+					'comments',
+					'editor'
+				),
 				'template' => array(
 					array( 'childress/maintenance-guide-template', array() )
 				),
