@@ -26,7 +26,6 @@
         }
 
         // put the last word in the heading on a new line
-        // $heading = get_the_category()[0]->name;
         $category = 'Maintenance Guide';
         $last_word_start = strrpos( $category ,' ' ) + 1;
         $first_line = substr( $category, 0, $last_word_start );
@@ -52,9 +51,9 @@
 
             <section class='wp-block-childress-image-text image-text image-text--blog container image-text--heading-em-top'>
                 <div class='image-text__heading'>
-                    <h2><?php echo $heading ?></h2>
+                    <h2><?php echo $heading; ?></h2>
                 </div>
-                <?php if( $attr['imageUrl'] ){ ?>
+                <?php if( isset( $attr['imageUrl'] ) ){ ?>
                     <div class='image-text__inner'>
                         <div class="image-text__img">
                             <div class='image-text__background'></div>
@@ -85,7 +84,7 @@
                     if( $tags ){ ?>
                         <div class="blog-post__tags">
                             <i class="fas fa-tags"></i><?php foreach( $tags as $key => $value ){ ?>
-                                <a href='<?php echo home_url( $value->slug ); ?>' ?><?php echo $value->name; ?></a><?php if( $key !== count( $tags ) - 1 ) echo ', '; ?>
+                                <?php echo $value->name; ?><?php if( $key !== count( $tags ) - 1 ) echo ', '; ?>
                             <?php } ?>
                         </div>
                     <?php } ?>

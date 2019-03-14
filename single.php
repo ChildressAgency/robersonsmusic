@@ -2,15 +2,14 @@
 
     <?php if( have_posts() ): while( have_posts() ): the_post(); ?>
         <?php 
-        global $post;
         $blocks = '';
         $projectTemplate = '';
         $inner = '';
         $attr = '';
 
-        if( has_blocks( $post->post_content ) ){
-            $blocks = parse_blocks( $post->post_content );
-        } 
+        if( has_blocks( get_the_content() ) ){
+            $blocks = parse_blocks( get_the_content() );
+        }
 
         if( $blocks ){
             foreach( $blocks as $block ){
@@ -27,10 +26,10 @@
         } 
 
         // put the last word in the heading on a new line
-        $heading = get_the_category()[0]->name;
-        $last_word_start = strrpos( $heading ,' ' ) + 1;
-        $first_line = substr( $heading, 0, $last_word_start );
-        $second_line = substr( $heading, $last_word_start );
+        $category = get_the_category()[0]->name;
+        $last_word_start = strrpos( $category ,' ' ) + 1;
+        $first_line = substr( $category, 0, $last_word_start );
+        $second_line = substr( $category, $last_word_start );
         $heading = $first_line . '<br/>' . $second_line;
 
         $terms = get_the_terms( $post->ID, 'category' ); ?>
@@ -52,14 +51,16 @@
 
             <section class='wp-block-childress-image-text image-text image-text--blog container image-text--heading-em-top'>
                 <div class='image-text__heading'>
-                    <h2><?php echo get_the_category()[0]->name; ?></h2>
+                    <h2><?php echo $heading; ?></h2>
                 </div>
-                <div class='image-text__inner'>
-                    <div class="image-text__img">
-                        <div class='image-text__background'></div>
-                        <img src='<?php echo $attr['imageUrl']; ?>' alt='<?php echo $attr['imageAlt']; ?>' class='wp-image-<?php echo $attr['imageId']; ?>' />
+                <?php if( isset( $attr['imageUrl'] ) ){ ?>
+                    <div class='image-text__inner'>
+                        <div class="image-text__img">
+                            <div class='image-text__background'></div>
+                            <img src='<?php echo $attr['imageUrl']; ?>' alt='<?php echo $attr['imageAlt']; ?>' class='wp-image-<?php echo $attr['imageId']; ?>' />
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
             </section>
 
             <div class="container">
@@ -76,14 +77,14 @@
 
                 <section class='blog-post__meta'>
                     <div class='blog-post__cats'>
-                        <a href='<?php echo home_url( get_the_category()[0]->slug ); ?>'><i class="fas fa-folder-open"></i><?php echo get_the_category()[0]->name; ?></a>
+                        <i class="fas fa-folder-open"></i><?php echo $category; ?>
                     </div>
                     <?php 
                     $tags = get_the_tags();
                     if( $tags ){ ?>
                         <div class="blog-post__tags">
                             <i class="fas fa-tags"></i><?php foreach( $tags as $key => $value ){ ?>
-                                <a href='<?php echo home_url( $value->slug ); ?>' ?><?php echo $value->name; ?></a><?php if( $key !== count( $tags ) - 1 ) echo ', '; ?>
+                                <?php echo $value->name; ?><?php if( $key !== count( $tags ) - 1 ) echo ', '; ?>
                             <?php } ?>
                         </div>
                     <?php } ?>
